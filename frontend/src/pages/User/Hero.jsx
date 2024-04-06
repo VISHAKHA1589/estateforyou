@@ -4,6 +4,7 @@ import { IonIcon } from '@ionic/react';
 import { homeOutline } from 'ionicons/icons';
 import EnquiryForm from '../Auth/enquiryForm';
 import { Link } from 'react-router-dom';
+import Footer from './Footer';
 
 function Hero() {
   return (
@@ -18,7 +19,7 @@ function Hero() {
           <p className="hero-text">
             Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
           </p>
-          <button className="btn">Make An Enquiry</button>
+          <Link to="/enquiry"><button className="btn">Make An Enquiry</button></Link>
         </div>
         <figure className="hero-banner">
           <img src="../src/assets/images/hero-banner.png" alt="Modern house model" className="w-100" />

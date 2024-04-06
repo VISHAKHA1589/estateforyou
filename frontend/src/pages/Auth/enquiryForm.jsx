@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom'; 
 import Navigation from './Navigation';
+import Footer from '../User/Footer';
 
 export function EnquiryForm() {
   
@@ -155,6 +156,7 @@ export function EnquiryForm() {
           </form>
         </Card>
       </div>
+      <Footer/>
     </div>
   );
 }

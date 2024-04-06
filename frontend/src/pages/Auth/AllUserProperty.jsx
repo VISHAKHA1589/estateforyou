@@ -3,6 +3,7 @@ import moment from "moment";
 import { useAllPropertiesQuery } from '../../redux/api/propertyApiSlics';
 import { useSelector } from 'react-redux';
 import Navigation from "./Navigation";
+import Footer from "../User/Footer";
 
 const AllUserProperties = () => {
   const { data: properties, isLoading, isError } = useAllPropertiesQuery();
@@ -31,12 +32,12 @@ const AllUserProperties = () => {
               key={property._id}
               to={`/property/update/${property._id}`}
               className="rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition duration-300"
-            >
+            > {property.image1 && property.image1.url && ( 
               <img
-                src={property.image.url}
+                src={property.image1.url}
                 alt={property.name}
                 className="w-full h-64 object-cover"
-              />
+              />)}
               <div className="p-4">
                 <h5 className="text-lg font-semibold mb-2">{property.name}</h5>
                 <p className="text-sm text-gray-600 mb-4">{moment(property.createdAt).format("MMMM Do YYYY")}</p>
@@ -55,6 +56,7 @@ const AllUserProperties = () => {
           ))}
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

@@ -59,7 +59,7 @@ export const sellPage = () => {
     <div className="bg-white">
       <Navigation />
       <div className="flex justify-center">
-        <h2 className="text-3xl tracking-tight text-gray-500 font-semibold">PROPERTIES FOR RENT</h2>
+        <h2 className="text-3xl tracking-tight text-gray-500 font-semibold">PROPERTIES FOR Sale</h2>
       </div>
 
       <div className="mx-auto px-4 sm:px-6 lg:px-8">
@@ -134,7 +134,7 @@ export const sellPage = () => {
                   </h3>
                   <p className="mt-1 text-sm text-gray-500">{property.address}</p>
                 </div>
-                <p className="text-sm font-medium text-gray-900">₹{property.price} / month</p>
+                <p className="text-sm font-medium text-gray-900">₹{property.price}</p>
               </div>
             </div>
           ))}

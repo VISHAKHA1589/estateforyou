@@ -2,9 +2,12 @@ import React, { useEffect } from 'react';
 import { mailOutline, locationOutline, closeOutline, searchOutline, personOutline, cartOutline, menuOutline,logoFacebook,logoPinterest,logoInstagram,logoTwitter, bedOutline,homeOutline } from 'ionicons/icons';
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom';
-
+import sellPage from '../User/sellPage';
+import rentPage from '../User/rentPage'
 function Navigation() {
   const { user, isAuthenticated } = useAuth0();
+
+  
 
   useEffect(() => {
     const elemToggleFunc = (elem) => {
@@ -35,16 +38,16 @@ function Navigation() {
       link.addEventListener("click", toggleNavbar);
     });
   
-    const handleScroll = () => {
-      window.scrollY >= 400
-        ? header.classList.add("active")
-        : header.classList.remove("active");
+    
+  
+
+
+    const handleProfileClick = () => {
+      setShowProfileMenu(!showProfileMenu);
     };
   
-    window.addEventListener("scroll", handleScroll);
-  
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+     
       navOpenBtn.removeEventListener("click", toggleNavbar);
       navCloseBtn.removeEventListener("click", toggleNavbar);
       navbarLinks.forEach(link => {
@@ -143,26 +146,34 @@ function Navigation() {
           </nav>
 
           <div className="header-bottom-actions">
-            {!isAuthenticated && (
-              <button className="header-bottom-actions-btn" aria-label="Profile">
-                <ion-icon icon={personOutline}></ion-icon>
-                <span>Profile</span>
-              </button>
-            )}
-            {isAuthenticated && (
-              <button className="header-bottom-actions-btn" aria-label="Profile">
-                <img src={user.picture} alt={user.name} />
-                <span>Profile</span>
-              </button>
-            )}
-            <button className="header-bottom-actions-btn" aria-label="Search">
+           
+          <button className="header-bottom-actions-btn" aria-label="Profile">
+    {!isAuthenticated ? (
+        <>
+            <ion-icon icon={personOutline}></ion-icon>
+            <span>Profile</span>
+        </>
+    ) : (<>
+        <img src={user.picture} alt={user.name} />
+        <span>Profile</span>
+        </>
+    )}
+</button>
+
+
+          
+            
+            
+            <button className="header-bottom-actions-btn" aria-label="Buy">
+              <Link to="/forSale" replace>
               <ion-icon icon={homeOutline}></ion-icon>
-              <span>Buy</span>
+              <span>Buy</span></Link>
             </button>
             
-            <button className="header-bottom-actions-btn" aria-label="Cart">
+            <button className="header-bottom-actions-btn" aria-label="Rent">
+              <Link to="/forRent" replace>
               <ion-icon icon={bedOutline}></ion-icon>
-              <span>Rent</span>
+              <span>Rent</span></Link>
             </button>
             <button className="header-bottom-actions-btn" data-nav-open-btn aria-label="Open Menu">
               <ion-icon icon={menuOutline}></ion-icon>
