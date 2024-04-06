@@ -1,16 +1,11 @@
 import React, { useState } from 'react';
-import {
-  Card,
-  Input,
-  Button,
-  Typography,
-} from "@material-tailwind/react";
 import { useGetPropertyDetailsQuery } from '../../redux/api/propertyApiSlics';
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom'; 
 import Navigation from './Navigation';
-import Footer from '../User/Footer';
+import { useFetchCategoriesQuery } from '../../redux/api/categoryApiSlice';
+import Footer from './../User/Footer'
 
 export function EnquiryForm() {
   
@@ -22,12 +17,20 @@ export function EnquiryForm() {
     message: '',
     category: ''
   });
+  const { data: categories } = useFetchCategoriesQuery();
+  const [selectedCategory, setSelectedCategory] = useState(''); // State for selected category
 
   const [loading, setLoading] = useState(false); // Introduce loading state
   const navigate = useNavigate(); // Initialize useNavigate
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleCategoryChange = (e) => {
+    const selectedCategoryId = e.target.value;
+    setSelectedCategory(selectedCategoryId);
+    setFormData({ ...formData, category: selectedCategoryId });
   };
 
   const handleSubmit = async (e) => {
@@ -47,114 +50,96 @@ export function EnquiryForm() {
 
   return (
     <div className="flex flex-col h-screen w-screen"> 
-
       <Navigation />
-      <div className="flex-grow flex justify-center items-center border border-"> {/* Make the content flex-grow to occupy remaining height */}
-        <Card color="transparent" shadow={false} className="flex justify-center items-center">
-          <Typography variant="h6" color="blue-gray" className="-mb-3">
-            The following details will be sent to the owner
-          </Typography>
-          <form className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96">
-            <div className="mb-1 flex flex-col gap-6">
-              <Typography variant="h6" color="blue-gray" className="-mb-3">
-                Your Name
-              </Typography>
-              <Input
+      <div className="flex-grow flex justify-center items-center">
+        <div className="w-full max-w-md p-8 bg-white  shadow-2xl rounded-xl">
+          <h2 className="text-xl font-semibold mb-4 section-title">Enquiry Form</h2>
+          <form className="space-y-4">
+            <div>
+              <label htmlFor="name" className="block mb-1">Your Name</label>
+              <input
                 type="text"
-                size="lg"
-                placeholder='John Doe'
-                className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                labelProps={{
-                  className: "before:content-none after:content-none",
-                }}
+                id="name"
+                className="w-full border-gray-300 rounded-md px-4 py-2"
+                placeholder="John Doe"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
               />
-              <Typography variant="h6" color="blue-gray" className="-mb-3">
-                Your Email
-              </Typography>
-              <Input
+            </div>
+            <div>
+              <label htmlFor="email" className="block mb-1">Your Email</label>
+              <input
                 type="email"
-                size="lg"
-                placeholder='john@example.com'
-                className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                labelProps={{
-                  className: "before:content-none after:content-none",
-                }}
+                id="email"
+                className="w-full border-gray-300 rounded-md px-4 py-2"
+                placeholder="john@example.com"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
               />
-              <Typography variant="h6" color="blue-gray" className="-mb-3">
-                Phone Number
-              </Typography>
-              <Input
+            </div>
+            <div>
+              <label htmlFor="phoneNumber" className="block mb-1">Phone Number</label>
+              <input
                 type="tel"
-                size="lg"
-                placeholder='+1234567890'
-                className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                labelProps={{
-                  className: "before:content-none after:content-none",
-                }}
+                id="phoneNumber"
+                className="w-full border-gray-300 rounded-md px-4 py-2"
+                placeholder="+1234567890"
                 name="phoneNumber"
                 value={formData.phoneNumber}
                 onChange={handleChange}
               />
-              <Typography variant="h6" color="blue-gray" className="-mb-3">
-                Category
-              </Typography>
-              <Input
-                type="text"
-                size="lg"
-                placeholder='Buy/Rent/Sell'
-                className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                labelProps={{
-                  className: "before:content-none after:content-none",
-                }}
-                name="category"
-                value={formData.category}
-                onChange={handleChange}
-              />
-              <Typography variant="h6" color="blue-gray" className="-mb-3">
-                Message
-              </Typography>
-              <Input
-                type="text"
-                size="lg"
-                placeholder='Write your message here'
-                className=" !border-t-blue-gray-200 focus:!border-t-gray-900"
-                labelProps={{
-                  className: "before:content-none after:content-none",
-                }}
+            </div>
+            <div>
+              <label htmlFor="category" className="block mb-1">Category</label>
+              <select
+                placeholder='Select category'
+                className='p-4 w-full border rounded-lg bg-white text-black'
+                onChange={handleCategoryChange} // Update selected category on change
+                value={selectedCategory} // Set selected category
+              >
+                {categories && categories.map((c) => (
+                  <option key={c._id} value={c.name}>{c.name}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="message" className="block mb-1">Message</label>
+              <textarea
+                id="message"
+                className="w-full border-gray-300 rounded-md px-4 py-2"
+                placeholder="Write your message here"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-              />
+              ></textarea>
             </div>
-            <Button 
-              onClick={handleSubmit} 
-              className="mt-6" 
-              fullWidth 
-              disabled={loading} // Disable button when loading
-            >
-              {loading ? 'Sending...' : 'Send Enquiry'} {/* Show loading text if loading */}
-            </Button>
-            <Button 
-              onClick={() => {
-                const phoneNumber = '9774573178'; // Replace with the actual phone number
-                const message = encodeURIComponent(`Hello, I am ${formData.name}, i am enquiring abour ${formData.category} and my message is: ${formData.message}`); // Encode the message
-                const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
-                window.open(whatsappUrl, '_blank');
-              }} 
-              className="mt-6" 
-              fullWidth 
-              disabled={loading} // Disable button when loading
-            >
-              Contact Us on WhatsApp
-            </Button>
+            <div>
+              <button 
+                onClick={handleSubmit} 
+                className="w-full bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 text-center"
+                disabled={loading} // Disable button when loading
+              >
+                {loading ? 'Sending...' : 'Send Enquiry'}
+              </button>
+            </div>
+            <div>
+              <button 
+                onClick={() => {
+                  const phoneNumber = '9774573178'; // Replace with the actual phone number
+                  const message = encodeURIComponent(`Hello, I am ${formData.name}, i am enquiring abour ${formData.category} and my message is: ${formData.message}`); // Encode the message
+                  const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+                  window.open(whatsappUrl, '_blank');
+                }} 
+                className="w-full bg-green-500 text-white rounded-md px-4 py-2 hover:bg-green-600 text-center"
+                disabled={loading} // Disable button when loading
+              >
+                Contact Us on WhatsApp
+              </button>
+            </div>
           </form>
-        </Card>
+        </div>
       </div>
       <Footer/>
     </div>

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useGetPropertyDetailsQuery } from '../../redux/api/propertyApiSlics';
 import { useNavigate, useParams } from 'react-router';
 import { FaLocationArrow } from 'react-icons/fa';
+import { useAuth0 } from "@auth0/auth0-react"; // Import useAuth0 hook
 import Navigation from './Navigation';
 import './PropertyPage.css';
 import EmailForm from './Emailform';
@@ -16,11 +17,13 @@ const PropertyPage = () => {
   const cardRef = useRef(null);
   const { userInfo } = useSelector(state => state.auth);
 
+  const { user, isAuthenticated } = useAuth0(); // Use useAuth0 hook here
+
   useEffect(() => {
-    if (!userInfo) {
+    if (!user || !userInfo) {
       navigate('/login');
     }
-  }, [navigate, userInfo]);
+  }, [navigate, userInfo, user]); // Include user in the dependencies array
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -34,6 +37,18 @@ const PropertyPage = () => {
     };
   }, []);
 
+  const handleButtonClick = () => {
+    if (user || userInfo) {
+      setShowCard(!showCard);
+    } else {
+      navigate('/login');
+    }
+  };
+
+  const handleThumbnailClick = (imageUrl) => {
+    setSelectedImage(imageUrl);
+  };
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -45,14 +60,6 @@ const PropertyPage = () => {
   if (!property) {
     return <div>No data found for the provided ID</div>;
   }
-
-  const handleButtonClick = () => {
-    setShowCard(!showCard);
-  };
-
-  const handleThumbnailClick = (imageUrl) => {
-    setSelectedImage(imageUrl);
-  };
 
   return (
     <div className={`${showCard ? 'blurred' : ''}`}>

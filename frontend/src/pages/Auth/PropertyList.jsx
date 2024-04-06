@@ -5,7 +5,9 @@ import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { useFetchCategoriesQuery } from '../../redux/api/categoryApiSlice.js';
 import Navigation from './Navigation.jsx';
-import Footer from "../User/Footer.jsx"
+import Footer from "../User/Footer.jsx";
+import { useAuth0 } from "@auth0/auth0-react";
+
 const PropertyList = () => {
   const [images, setImages] = useState(['', '', '', '']);
   const [name, setName] = useState('');
@@ -16,11 +18,17 @@ const PropertyList = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [imageUrls, setImageUrls] = useState(['', '', '', '']);
   const navigate = useNavigate();
+  const { user,isAuthenticated } = useAuth0();
 
   const { data: categories } = useFetchCategoriesQuery();
   const { userInfo } = useSelector((state) => state.auth);
 
   const [createProperty] = useCreatePropertyMutation();
+
+  if (!user || !isAuthenticated) {
+    navigate('/login');
+    return null;
+  }
 
   const handleImage = (index, e) => {
     const file = e.target.files[0];

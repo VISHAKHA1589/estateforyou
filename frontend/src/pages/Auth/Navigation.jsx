@@ -101,7 +101,8 @@ function Navigation() {
                 </a>
               </li>
             </ul>
-            <button className="header-top-btn">Add Listing</button>
+            <Link to="/propertylist">
+            <button className="header-top-btn">Add Listing</button></Link>
           </div>
         </div>
       </div>
