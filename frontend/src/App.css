@@ -84,6 +84,13 @@ span,
 button,
 ion-icon { display: block; }
 
+.header-bottom-actions-btn:nth-of-type(1) img{
+ 
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;}
+
+  
 button {
   border: none;
   background: none;
@@ -250,7 +257,13 @@ button, a { transition: var(--transition); }
 .has-scrollbar::-webkit-scrollbar-button { width: 15%; }
 
 
-
+@media (max-width: 600px) {
+  .header-bottom-actions-btn:nth-of-type(1) img {
+    height: 30px;
+    width: 30px;
+    margin-top: -4px;
+  }
+}
 
 
 /*-----------------------------------*\
@@ -1138,6 +1151,8 @@ button, a { transition: var(--transition); }
    * REUSED STYLE
    */
 
+
+
   .container {
     max-width: 550px;
     margin-inline: auto;
@@ -1274,10 +1289,17 @@ button, a { transition: var(--transition); }
   .header-bottom-actions-btn span { display: none; }
 
   .header-bottom-actions-btn {
-    background: var(--white);
+    background: rgb(245, 247, 250);
     width: 50px;
     height: 50px;
-    box-shadow: var(--shadow-2);
+   
+  }
+
+  .header-bottom-actions-btn:nth-of-type(1) {
+    background: none;
+    width: 50px;
+    height: 50px;
+   
   }
 
 
@@ -1565,13 +1587,15 @@ button, a { transition: var(--transition); }
     text-transform: capitalize;
   }
 
-  .header { padding-bottom: 114px; }
+  .header { padding-bottom: 114px;
+   }
 
   .header-bottom {
     position: absolute;
     left: 0;
     bottom: 0;
     width: 100%;
+    
   }
 
   .header.active .header-bottom {

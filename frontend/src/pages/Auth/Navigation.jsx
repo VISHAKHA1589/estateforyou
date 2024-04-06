@@ -1,13 +1,62 @@
-import React from 'react';
-import { mailOutline, locationOutline, logoFacebook, logoTwitter, logoInstagram, logoPinterest, closeOutline, searchOutline, personOutline, cartOutline, menuOutline } from 'ionicons/icons';
-
-
+import React, { useEffect } from 'react';
+import { mailOutline, locationOutline, closeOutline, searchOutline, personOutline, cartOutline, menuOutline,logoFacebook,logoPinterest,logoInstagram,logoTwitter, bedOutline,homeOutline } from 'ionicons/icons';
+import { useAuth0 } from "@auth0/auth0-react";
+import { Link } from 'react-router-dom';
 
 function Navigation() {
+  const { user, isAuthenticated } = useAuth0();
+
+  useEffect(() => {
+    const elemToggleFunc = (elem) => {
+      elem.classList.toggle("active");
+    };
+  
+    const navbar = document.querySelector("[data-navbar]");
+    const overlay = document.querySelector("[data-overlay]");
+    const navCloseBtn = document.querySelector("[data-nav-close-btn]");
+    const navOpenBtn = document.querySelector("[data-nav-open-btn]");
+    const navbarLinks = document.querySelectorAll("[data-nav-link]");
+  
+    const navElemArr = [overlay, navCloseBtn, navOpenBtn];
+  
+    for (let i = 0; i < navbarLinks.length; i++) { 
+      navElemArr.push(navbarLinks[i]); 
+    }
+  
+    const toggleNavbar = () => {
+      elemToggleFunc(navbar);
+      elemToggleFunc(overlay);
+    };
+  
+    navOpenBtn.addEventListener("click", toggleNavbar);
+    navCloseBtn.addEventListener("click", toggleNavbar);
+  
+    navbarLinks.forEach(link => {
+      link.addEventListener("click", toggleNavbar);
+    });
+  
+    const handleScroll = () => {
+      window.scrollY >= 400
+        ? header.classList.add("active")
+        : header.classList.remove("active");
+    };
+  
+    window.addEventListener("scroll", handleScroll);
+  
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      navOpenBtn.removeEventListener("click", toggleNavbar);
+      navCloseBtn.removeEventListener("click", toggleNavbar);
+      navbarLinks.forEach(link => {
+        link.removeEventListener("click", toggleNavbar);
+      });
+    };
+  }, []);
+  
+
   return (
     <header className="header" data-header>
       <div className="overlay" data-overlay></div>
-      
 
       <div className="header-top">
         <div className="container">
@@ -15,13 +64,13 @@ function Navigation() {
             <li>
               <a href="mailto:info@homeverse.com" className="header-top-link">
                 <ion-icon icon={mailOutline}></ion-icon>
-                <span>info@homeverse.com</span>
+                <span>Estate4Usupport@gmail.com</span>
               </a>
             </li>
             <li>
               <a href="#" className="header-top-link">
                 <ion-icon icon={locationOutline}></ion-icon>
-                <address>15/A, Nest Tower, NYC</address>
+                <address>Agartala,Tripura</address>
               </a>
             </li>
           </ul>
@@ -56,14 +105,14 @@ function Navigation() {
 
       <div className="header-bottom ">
         <div className="container">
-          <a href="#" className="logo">
+          <Link to="/" className="logo">
             <img src="../src/assets/images/logo.png" className='w-[12rem]' alt="Homeverse logo" />
-          </a>
+          </Link>
 
           <nav className="navbar" data-navbar>
             <div className="navbar-top">
               <a href="#" className="logo ">
-                <img src="frontend/src/assets/logo.png"  alt="Homeverse logo" />
+                <img src="../src/assets/images/logo.png" alt="Homeverse logo" />
               </a>
               <button className="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
                 <ion-icon icon={closeOutline}></ion-icon>
@@ -94,17 +143,26 @@ function Navigation() {
           </nav>
 
           <div className="header-bottom-actions">
+            {!isAuthenticated && (
+              <button className="header-bottom-actions-btn" aria-label="Profile">
+                <ion-icon icon={personOutline}></ion-icon>
+                <span>Profile</span>
+              </button>
+            )}
+            {isAuthenticated && (
+              <button className="header-bottom-actions-btn" aria-label="Profile">
+                <img src={user.picture} alt={user.name} />
+                <span>Profile</span>
+              </button>
+            )}
             <button className="header-bottom-actions-btn" aria-label="Search">
-              <ion-icon icon={searchOutline}></ion-icon>
-              <span>Search</span>
+              <ion-icon icon={homeOutline}></ion-icon>
+              <span>Buy</span>
             </button>
-            <button className="header-bottom-actions-btn" aria-label="Profile">
-              <ion-icon icon={personOutline}></ion-icon>
-              <span>Profile</span>
-            </button>
+            
             <button className="header-bottom-actions-btn" aria-label="Cart">
-              <ion-icon icon={cartOutline}></ion-icon>
-              <span>Cart</span>
+              <ion-icon icon={bedOutline}></ion-icon>
+              <span>Rent</span>
             </button>
             <button className="header-bottom-actions-btn" data-nav-open-btn aria-label="Open Menu">
               <ion-icon icon={menuOutline}></ion-icon>

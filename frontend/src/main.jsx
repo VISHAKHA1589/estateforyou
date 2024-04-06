@@ -10,7 +10,7 @@ import App from './App.jsx';
 import Login from './pages/Auth/Login.jsx';
 import Register from './pages/Auth/register.jsx';
 import PrivateRoutes from './components/PrivateRoutes.jsx';
-import Profile from './pages/User/Profile.jsx';
+
 import AdminRoutes from './pages/Admin/AdminRoutes.jsx';
 import UserList from './pages/Admin/UserList.jsx';
 import CategoryList from './pages/Admin/CategoryList.jsx';
@@ -25,20 +25,29 @@ import Home from './Home.jsx';
 import EnquiryForm from './pages/Auth/enquiryForm.jsx';
 import 'tailwindcss/tailwind.css';
 import './index.css'; // or wherever your custom CSS is located
-import 'react-toastify/dist/ReactToastify.css'; // Import the CSS for toast notifications
+import 'react-toastify/dist/ReactToastify.css';
+import LoginButton from "./pages/User/loginButton.jsx"; // Import the CSS for toast notifications
+import LogoutButton from './pages/User/logoutButton.jsx';
+import Profile from './pages/User/profileButton.jsx';
 
 
 ReactDOM.render(
   <Provider store={store}>
     <Auth0Provider
-      domain="dev-7aqfunz3tyq3gif8.us.auth0.com"
-      clientId="oO1fi82DyEVTKxeNcyEdpYwq2ZQEr5yJ"
-      redirectUri={window.location.origin}
+      domain="dev-p7wvtxl7oxgknivr.us.auth0.com"
+      clientId="jkTCGj55ZJcVNmQ1zQBfUyFMKPsrmKrP"
+      authorizationParams={{
+        redirect_uri: window.location.origin
+      }}
+  
     >
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />}/>
-          <Route path="/login" element={<Login />} />
+          <Route path="/loginAdmin" element={<Login />} />
+            <Route path="/login" element={<LoginButton/>}/>
+            <Route path="/logout" element={<LogoutButton/>}/>
+            <Route path="/profile" element={<Profile/>}/>
           
           <Route path="/register" element={<Register />} />
           <Route path="/forRent" element={<RentPage />} />
