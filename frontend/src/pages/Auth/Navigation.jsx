@@ -151,11 +151,11 @@ function Navigation() {
     {!isAuthenticated ? (
         <>
             <ion-icon icon={personOutline}></ion-icon>
-            <span>Profile</span>
+            <span></span>
         </>
     ) : (<>
         <img src={user.picture} alt={user.name} />
-        <span>Profile</span>
+        <span></span>
         </>
     )}
 </button>
