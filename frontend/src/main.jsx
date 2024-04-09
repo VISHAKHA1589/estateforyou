@@ -28,9 +28,14 @@ import './index.css'; // or wherever your custom CSS is located
 import 'react-toastify/dist/ReactToastify.css';
 import LoginButton from "./pages/User/loginButton.jsx"; // Import the CSS for toast notifications
 import LogoutButton from './pages/User/logoutButton.jsx';
+
+
+=======
 import Profile from './pages/User/profileButton.jsx';
 import AdminDashboard from './pages/Admin/adminDashboard.jsx';
 import { createAuth0Client } from '@auth0/auth0-spa-js';
+import ProfilePage from './pages/User/profilePage.jsx';import ProfilePage from './pages/User/profilePage.jsx';
+
 
 
 ReactDOM.render(
@@ -49,7 +54,7 @@ ReactDOM.render(
           <Route path="/loginAdmin" element={<Login />} />
             <Route path="/login" element={<LoginButton/>}/>
             <Route path="/logout" element={<LogoutButton/>}/>
-            <Route path="/profile" element={<Profile/>}/>
+            <Route path="/profile" element={<ProfilePage/>}/>
           
           <Route path="/register" element={<Register />} />
           <Route path="/forRent" element={<RentPage />} />
@@ -60,7 +65,7 @@ ReactDOM.render(
           {/* Define private routes with PrivateRoutes component */}
           <Route element={<PrivateRoutes />}>
             {/* Nested route for /profile */}
-            <Route path="/profile" element={<Profile />} /><Route path='/propertylist/:pageNumber' element={<PropertyList/>}/>
+            <Route path='/propertylist/:pageNumber' element={<PropertyList/>}/>
             <Route path='/propertylist' element={<PropertyList/>}/>
             <Route path='/property/update/:_id'  element={<PropertyUpdate/>}/>
             <Route path='/allproperties'  element={<AllUserProperty/>}/>

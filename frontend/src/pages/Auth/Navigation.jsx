@@ -154,19 +154,19 @@ const {userInfo}=useSelector(state=>state.auth)
           </nav>
 
           <div className="header-bottom-actions">
-           
-          <button className="header-bottom-actions-btn" aria-label="Profile">
+<Link to="/profilePage" >         
+          <button className="header-bottom-actions-btn" aria-label="ProfilePage">
     {!isAuthenticated ? (
         <>
             <ion-icon icon={personOutline}></ion-icon>
-            <span>Profile</span>
+            <span></span>
         </>
     ) : (<>
         <img src={user.picture} alt={user.name} />
-        <span>Profile</span>
+        <span></span>
         </>
     )}
-</button>
+</button></Link>   
 
 
           
