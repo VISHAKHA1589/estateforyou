@@ -19,7 +19,7 @@ export function EmailForm() {
   const { userInfo } = useSelector((state) => state.auth);
   const [formData, setFormData] = useState({
     name: '',
-    email: userInfo.email ||(isAuthenticated && user.email),
+    email: userInfo&& userInfo.email ||(isAuthenticated && user.email),
     phoneNumber: '',
     propertyOwner: property.ownerName,
     propertyPhoneNumber: property.phoneNumber,
@@ -80,7 +80,7 @@ export function EmailForm() {
                 Your Email
               </Typography>
               <Typography>
-                {userInfo && userInfo.email|| isAuthenticated && userInfo.email}
+                {userInfo && userInfo.email|| isAuthenticated && user.email}
               </Typography>
               <Typography variant="h6" color="blue-gray" className="-mb-3">
                 Phone number

@@ -1,9 +1,14 @@
 import React, { useEffect } from 'react';
 import { mailOutline, locationOutline, closeOutline, searchOutline, personOutline, cartOutline, menuOutline,logoFacebook,logoPinterest,logoInstagram,logoTwitter, bedOutline,homeOutline } from 'ionicons/icons';
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import sellPage from '../User/sellPage';
-import { useSelector } from 'react-redux'
+
+import { useLogoutMutation } from "../../redux/api/UsersApiSlice.js"
+import { logout } from "../../redux/features/auth/authSlice.js";
+
+import { useSelector, useDispatch } from "react-redux";
+
 
 import rentPage from '../User/rentPage'
 
@@ -11,6 +16,19 @@ function Navigation() {
   const { user, isAuthenticated } = useAuth0();
 const {userInfo}=useSelector(state=>state.auth)
   const { loginWithRedirect } = useAuth0();
+  const [logoutApiCall] = useLogoutMutation();
+  const dispatch = useDispatch();
+const navigate= useNavigate();
+  const logoutHandler = async () => {
+    try {
+      await logoutApiCall().unwrap();
+      dispatch(logout());
+      navigate("/login");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
   useEffect(() => {
     const elemToggleFunc = (elem) => {
@@ -41,8 +59,11 @@ const {userInfo}=useSelector(state=>state.auth)
     navbarLinks.forEach(link => {
       link.addEventListener("click", toggleNavbar);
     });
-  
-    console.log(userInfo)
+ 
+   if (isAuthenticated && user){
+    console.log(user)
+
+   }
     
   
 
@@ -108,7 +129,11 @@ const {userInfo}=useSelector(state=>state.auth)
             </ul>
             <Link to="/propertylist">
             <button className="header-top-btn">Add Listing</button></Link>
-            <button  className="header-top-btn" onClick={() => loginWithRedirect()}>Log In</button>;
+            <button  className="header-top-btn" onClick={() => loginWithRedirect()}>Log In</button>
+         
+            <button onClick={logoutHandler}
+ className="header-top-btn">Logout</button>
+            
 
           </div>
         </div>
@@ -167,6 +192,7 @@ const {userInfo}=useSelector(state=>state.auth)
         </>
     )}
 </button>
+
 
 
           

@@ -33,11 +33,14 @@ import AdminDashboard from './pages/Admin/adminDashboard.jsx';
 import { createAuth0Client } from '@auth0/auth0-spa-js';
 
 
+
 ReactDOM.render(
   <Provider store={store}>
     <Auth0Provider
       domain="dev-p7wvtxl7oxgknivr.us.auth0.com"
       clientId="jkTCGj55ZJcVNmQ1zQBfUyFMKPsrmKrP"
+
+
       authorizationParams={{
         redirect_uri: window.location.origin
       }}
@@ -57,16 +60,14 @@ ReactDOM.render(
           <Route path="/forSale" element={<SellPage />} />
           <Route index={true} path="/" element={<Home />} />
           
-          {/* Define private routes with PrivateRoutes component */}
-          <Route element={<PrivateRoutes />}>
-            {/* Nested route for /profile */}
+        
             <Route path="/profile" element={<Profile />} /><Route path='/propertylist/:pageNumber' element={<PropertyList/>}/>
             <Route path='/propertylist' element={<PropertyList/>}/>
             <Route path='/property/update/:_id'  element={<PropertyUpdate/>}/>
             <Route path='/allproperties'  element={<AllUserProperty/>}/>
             <Route path='/enquiry'  element={<EnquiryForm/>}/>
 
-          </Route>
+    
           
           <Route path='/admin/' element={<AdminRoutes/>}>
               <Route path='userlist' element={<UserList/>}/>

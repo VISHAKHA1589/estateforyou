@@ -6,13 +6,15 @@ import { useNavigate } from 'react-router-dom';
 import Navigation from './Navigation';
 import { useFetchCategoriesQuery } from '../../redux/api/categoryApiSlice';
 import Footer from './../User/Footer'
+import { useAuth0 } from "@auth0/auth0-react";
 
 export function EnquiryForm() {
+  const { user, isAuthenticated } = useAuth0();
   
   const { userInfo } = useSelector((state) => state.auth);
   const [formData, setFormData] = useState({
     name: '',
-    email: userInfo.email,
+    email: userInfo&& userInfo.email || isAuthenticated && user.email,
     phoneNumber: '',
     message: '',
     category: ''
