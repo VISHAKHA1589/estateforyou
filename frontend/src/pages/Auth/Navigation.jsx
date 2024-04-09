@@ -3,22 +3,26 @@ import { mailOutline, locationOutline, closeOutline, searchOutline, personOutlin
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from 'react-router-dom';
 import sellPage from '../User/sellPage';
+import { useSelector } from 'react-redux'
+
 import rentPage from '../User/rentPage'
+
 function Navigation() {
   const { user, isAuthenticated } = useAuth0();
-
-  
+const {userInfo}=useSelector(state=>state.auth)
+  const { loginWithRedirect } = useAuth0();
 
   useEffect(() => {
     const elemToggleFunc = (elem) => {
       elem.classList.toggle("active");
     };
-  
+    
     const navbar = document.querySelector("[data-navbar]");
     const overlay = document.querySelector("[data-overlay]");
     const navCloseBtn = document.querySelector("[data-nav-close-btn]");
     const navOpenBtn = document.querySelector("[data-nav-open-btn]");
     const navbarLinks = document.querySelectorAll("[data-nav-link]");
+    
   
     const navElemArr = [overlay, navCloseBtn, navOpenBtn];
   
@@ -38,6 +42,7 @@ function Navigation() {
       link.addEventListener("click", toggleNavbar);
     });
   
+    console.log(userInfo)
     
   
 
@@ -101,7 +106,10 @@ function Navigation() {
                 </a>
               </li>
             </ul>
-            <button className="header-top-btn">Add Listing</button>
+            <Link to="/propertylist">
+            <button className="header-top-btn">Add Listing</button></Link>
+            <button  className="header-top-btn" onClick={() => loginWithRedirect()}>Log In</button>;
+
           </div>
         </div>
       </div>

@@ -28,7 +28,14 @@ import './index.css'; // or wherever your custom CSS is located
 import 'react-toastify/dist/ReactToastify.css';
 import LoginButton from "./pages/User/loginButton.jsx"; // Import the CSS for toast notifications
 import LogoutButton from './pages/User/logoutButton.jsx';
-import ProfilePage from './pages/User/profilePage.jsx';
+
+
+=======
+import Profile from './pages/User/profileButton.jsx';
+import AdminDashboard from './pages/Admin/adminDashboard.jsx';
+import { createAuth0Client } from '@auth0/auth0-spa-js';
+import ProfilePage from './pages/User/profilePage.jsx';import ProfilePage from './pages/User/profilePage.jsx';
+
 
 
 ReactDOM.render(
@@ -70,6 +77,7 @@ ReactDOM.render(
               <Route path='userlist' element={<UserList/>}/>
               <Route path='categorylist' element={<CategoryList/>}/>
               <Route path='allpropertieslist' element={<AllProperties/>}/>
+              <Route path='admindashboard' element={<AdminDashboard/>}/>
           </Route>
         </Routes>
       </BrowserRouter>

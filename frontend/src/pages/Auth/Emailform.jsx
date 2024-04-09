@@ -7,16 +7,19 @@ import {
 } from "@material-tailwind/react";
 import { useGetPropertyDetailsQuery } from '../../redux/api/propertyApiSlics';
 import { useSelector } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
 import axios from "axios";
 import { useParams } from 'react-router';
 export function EmailForm() {
+  const { user, isAuthenticated } = useAuth0();
+
   const { id: propertyId } = useParams();
   const { data: property, isLoading, isError } = useGetPropertyDetailsQuery(propertyId);
   const [notSubmit, setNotSubmit] = useState(false);
   const { userInfo } = useSelector((state) => state.auth);
   const [formData, setFormData] = useState({
     name: '',
-    email: userInfo.email,
+    email: userInfo.email ||(isAuthenticated && user.email),
     phoneNumber: '',
     propertyOwner: property.ownerName,
     propertyPhoneNumber: property.phoneNumber,
@@ -77,7 +80,7 @@ export function EmailForm() {
                 Your Email
               </Typography>
               <Typography>
-                {userInfo && userInfo.email}
+                {userInfo && userInfo.email|| isAuthenticated && userInfo.email}
               </Typography>
               <Typography variant="h6" color="blue-gray" className="-mb-3">
                 Phone number
