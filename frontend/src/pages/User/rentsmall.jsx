@@ -14,7 +14,7 @@ export const RentSmall = () => {
   }
 
   // Filter properties by category "rent"
-  const rentProperties = data.filter(property => property.category === '6603e6c8efb63894b3663278');
+  const rentProperties = data.filter(property => property.category === '6603e6c8efb63894b3663278'  && property.approved);
 
   return (
    <div className="bg-white">
