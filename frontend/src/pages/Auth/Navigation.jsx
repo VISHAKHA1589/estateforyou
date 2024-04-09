@@ -146,8 +146,8 @@ function Navigation() {
           </nav>
 
           <div className="header-bottom-actions">
-           
-          <button className="header-bottom-actions-btn" aria-label="Profile">
+<Link to="/profilePage" >         
+          <button className="header-bottom-actions-btn" aria-label="ProfilePage">
     {!isAuthenticated ? (
         <>
             <ion-icon icon={personOutline}></ion-icon>
@@ -158,7 +158,7 @@ function Navigation() {
         <span></span>
         </>
     )}
-</button>
+</button></Link>   
 
 
           
