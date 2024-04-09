@@ -10,7 +10,8 @@ import Navigation from './Navigation';
 const PropertyUpdate = () => {
   const params = useParams();
   const { data: propertyData } = useGetPropertyByIdQuery(params._id);
-  const [image, setImage] = useState(propertyData?.image || '');
+
+  const [image1, setImage1] = useState(propertyData?.image1 || '');
   const [name, setName] = useState(propertyData?.name || '');
   const [description, setDescription] = useState(propertyData?.description || '');
   const [price, setPrice] = useState(propertyData?.price || '');
@@ -30,7 +31,7 @@ const PropertyUpdate = () => {
       setPrice(propertyData.price);
       setPhoneNumber(propertyData.phoneNumber);
       setCategory(propertyData.category);
-      setImage(propertyData.image.url);
+      setImage1(propertyData.image1.url);
     }
   }, [propertyData]);
 
@@ -44,7 +45,7 @@ const PropertyUpdate = () => {
       formData.append('category', category);
       formData.append('address', address);
       formData.append('phoneNumber', phoneNumber);
-      const data = await updateProperty({ propertyId: params.id, formData });
+      const data = await updateProperty({ propertyId: params._id, formData });
 
       if (data?.error) {
         toast.error(data.error, {
@@ -54,11 +55,11 @@ const PropertyUpdate = () => {
         toast.success(`Property successfully updated`, {
           autoClose: 2000,
         });
-        navigate('/admin/allpropertieslist');
+        navigate("/admin/allpropertieslist");
       }
     } catch (err) {
       console.log(err);
-      toast.error('Property update failed. Try again.', {
+      toast.error("Property update failed. Try again.", {
         autoClose: 2000,
       });
     }
@@ -69,7 +70,7 @@ const PropertyUpdate = () => {
       let answer = window.confirm('Are you sure you want to delete this property?');
       if (!answer) return;
 
-      const { data } = await deleteProperty(params.id);
+      const { data } = await deleteProperty(params._id);
       toast.success(`"${data.name}" is deleted`, {
         autoClose: 2000,
       });
@@ -77,23 +78,22 @@ const PropertyUpdate = () => {
     } catch (err) {
       console.log(err);
       toast.error('Delete failed. Try again.', {
-        position: toast.POSITION.TOP_RIGHT,
         autoClose: 2000,
       });
     }
   };
 
   return (
-    <><Navigation/>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center h-screen mr-10 ">
-        
+    <>
+      <Navigation />
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center h-screen mr-10 nunito-sans">
         <div className="flex flex-col md:flex-row">
           <div className="md:w-3/4 p-3">
             <div className="h-12 section-title text-2xl">Update / Delete Property</div>
 
-            {image && (
+            {image1 && (
               <div className="text-center">
-                <img src={image} alt="property" className="block mx-auto w-1/5 h-[40%]" />
+                <img src={image1} alt="property" className="block mx-auto w-1/5 h-[40%]" />
               </div>
             )}
 

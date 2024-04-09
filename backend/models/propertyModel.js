@@ -28,7 +28,7 @@ const propertySchema = mongoose.Schema(
     description: { type: String, required: true },
     price: { type: Number, required: true },
     address: { type: String, required: true },
-    approved: { type: Boolean, required: true }
+    approved: { type: Boolean, required: false }
   },
   { timestamps: true }
 );

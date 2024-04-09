@@ -4,37 +4,50 @@ import Property from "../models/propertyModel.js";
 import cloudinary from "../utils/cloudinary.js"
 const addProperty = asyncHandler(async (req, res) => {
   try {
-    const { name,image, owner, price, category, address, phoneNumber,description, ownerName } = req.fields;
+    const { name, owner, image1, image2, image3, image4, price, category, address, phoneNumber, description, ownerName,approved } = req.fields;
 
-    // Validation
-    switch (true) {
-      case !name:
-        return res.json({ error: "Name is required" });
-        case !image:
-          return res.json({ error: "image is required" });
-      case !ownerName:
-        return res.json({ error: "owner name is required" });
-      case !owner:
-        return res.json({ error: "owner is required" });
-      case !price:
-        return res.json({ error: "price is required" });
-      case !description:
-        return res.json({ error: "description is required" });
-      case !category:
-        return res.json({ error: "Category is required" });
-      case !phoneNumber:
-        return res.json({ error: "phoneNumber is required" });
-        case !address:
-          return res.json({ error: "address is required" });
-    }
-    const result= await cloudinary.uploader.upload(image, {
-      folder: "uploads",
-    })
-    const property = new Property({ name, description, phoneNumber, address, ownerName, owner,category, price, image: {
-      public_id: result.public_id,
-      url:result.secure_url,
-    } });
+    // Validate fields...
+
+    // Upload images to Cloudinary
+    const uploadResults = await Promise.all([
+      cloudinary.uploader.upload(image1, { folder: "uploads" }),
+      cloudinary.uploader.upload(image2, { folder: "uploads" }),
+      cloudinary.uploader.upload(image3, { folder: "uploads" }),
+      cloudinary.uploader.upload(image4, { folder: "uploads" }),
+    ]);
+
+    // Create property object with uploaded image URLs
+    const property = new Property({ 
+      name, 
+      description, 
+      phoneNumber, 
+      address, 
+      ownerName, 
+      owner, 
+      category, 
+      price, 
+      image1: {
+        public_id: uploadResults[0].public_id,
+        url: uploadResults[0].secure_url,
+      },
+      image2: {
+        public_id: uploadResults[1].public_id,
+        url: uploadResults[1].secure_url,
+      },
+      image3: {
+        public_id: uploadResults[2].public_id,
+        url: uploadResults[2].secure_url,
+      },
+      image4: {
+        public_id: uploadResults[3].public_id,
+        url: uploadResults[3].secure_url,
+      },
+      approved:false
+    });
+
+    // Save property object
     await property.save();
+
     res.json(property);
   } catch (error) {
     console.error(error);
@@ -42,19 +55,15 @@ const addProperty = asyncHandler(async (req, res) => {
   }
 });
 
+
 const updatePropertyDetails = asyncHandler(async (req, res) => {
   try {
-    const {  name, owner,image, price, category, address, phoneNumber,description, ownerName } = req.fields;
+    const { name, price, category, address, phoneNumber, description } = req.fields;
 
-    // Validation
     // Validation
     switch (true) {
       case !name:
         return res.json({ error: "Name is required" });
-      case !owner:
-        return res.json({ error: "owner is required" });
-        case !image:
-        return res.json({ error: "image is required" });
       case !price:
         return res.json({ error: "price is required" });
       case !description:
@@ -63,15 +72,14 @@ const updatePropertyDetails = asyncHandler(async (req, res) => {
         return res.json({ error: "Category is required" });
       case !phoneNumber:
         return res.json({ error: "phoneNumber is required" });
-        case !address:
-          return res.json({ error: "address is required" });
-        case !ownerName:
-        return res.json({ error: "owner name is required" });
+      case !address:
+        return res.json({ error: "address is required" });
+      
     }
 
     const property = await Property.findByIdAndUpdate(
       req.params.id,
-      { ...req.fields },
+      { ...req.fields},
       { new: true }
     );
 
@@ -82,7 +90,26 @@ const updatePropertyDetails = asyncHandler(async (req, res) => {
     console.error(error);
     res.status(400).json(error.message);
   }
+ 
+  
 });
+const approveProperty = asyncHandler(async (req, res) => {
+  try {
+    const property = await Property.findByIdAndUpdate(
+      req.params.id,
+      { approved: true },
+      { new: true }
+    );
+
+    res.json(property);
+  } catch (error) {
+    console.error(error);
+    res.status(400).json(error.message);
+  }
+});
+
+
+
 
 const removeProperty = asyncHandler(async (req, res) => {
   try {
@@ -190,6 +217,6 @@ const fetchNewProperties = asyncHandler(async (req, res) => {
 
 
 export {
-  addProperty, updatePropertyDetails, removeProperty,fetchAllProperties,fetchProperty,fetchPropertyById,fetchProperties, fetchNewProperties
+  addProperty, updatePropertyDetails, removeProperty,fetchAllProperties,fetchProperty,fetchPropertyById,fetchProperties, fetchNewProperties,approveProperty
 
 };

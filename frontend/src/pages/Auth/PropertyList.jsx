@@ -67,8 +67,8 @@ const PropertyList = () => {
   
     try {
       const propertyData = new FormData();
-      propertyData.append("owner", userInfo.email);
-      propertyData.append("ownerName", userInfo.name);
+      propertyData.append("owner", user.email);
+      propertyData.append("ownerName", user.name);
       images.forEach((image, index) => {
         propertyData.append(`image${index + 1}`, image);
       });
@@ -78,10 +78,11 @@ const PropertyList = () => {
       propertyData.append("category", category);
       propertyData.append("address", address);
       propertyData.append("phoneNumber", phoneNumber);
+     
   
       const { data } = await createProperty(propertyData);
       if (data && data.error) {
-        toast.error("Property create failed. Try Again.");
+        toast.error(data.error);
       } else {
         toast.success(`${data.name} is created`);
         navigate("/");

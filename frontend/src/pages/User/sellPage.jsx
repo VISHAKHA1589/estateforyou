@@ -21,7 +21,7 @@ export const sellPage = () => {
     return <div>No data available</div>;
   }
 
-  const sellProperties = data.filter(property => property.category === "6603e6caefb63894b366327c");
+  const sellProperties = data.filter(property => property.category === "6603e6caefb63894b366327c" && property.approved);
 
   let filteredProperties = sellProperties.filter(property => {
     const matchesSearchQuery = property.address.toLowerCase().includes(searchQuery.toLowerCase());

@@ -4,7 +4,7 @@ const router = express.Router();
 
 // controllers
 import {
-  addProperty, updatePropertyDetails, removeProperty,fetchAllProperties,fetchProperty,fetchPropertyById, fetchNewProperties
+  addProperty, updatePropertyDetails, removeProperty,fetchAllProperties,fetchProperty,fetchPropertyById, fetchNewProperties,approveProperty
   
 } from "../controllers/propertyController.js";
 import { authenticate, authorizeAdmin } from "../middlewares/authMiddleware.js";
@@ -21,9 +21,11 @@ router.route("/new").get(fetchNewProperties);
 router
   .route("/:id")
   .get(fetchPropertyById)
-  .put(  formidable(), updatePropertyDetails)
+  .put(formidable(), updatePropertyDetails)
+  .put(formidable(), approveProperty)
   .delete( removeProperty);
-
+  router
+  .route("/:id/approve").put(formidable(), approveProperty)
 
 
 export default router;

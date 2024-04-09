@@ -68,11 +68,19 @@ export const propertyApiSlice = apiSlice.injectEndpoints({
       query: () => `${PROPERTY_URL}/new`,
       keepUnusedDataFor: 5,
     }),
-
+approveProperty: builder.mutation({
+    query: (propertyId) => ({
+      url: `${PROPERTY_URL}/${propertyId}/approve`,
+      method: "PUT",
+    }),
+    invalidatesTags: ["Property"], // Invalidate cache for Property
   }),
+  }),
+  
+
 });
 
 
 export const {
-  useCreatePropertyMutation,useGetPropertyByIdQuery,useGetPropertiesQuery,useGetPropertyDetailsQuery,useUpdatePropertyMutation,useDeletePropertyMutation,useGetNewPropertiesQuery, useUploadPropertyImageMutation,useAllPropertiesQuery
+  useCreatePropertyMutation,useGetPropertyByIdQuery,useGetPropertiesQuery,useGetPropertyDetailsQuery,useUpdatePropertyMutation,useDeletePropertyMutation,useGetNewPropertiesQuery, useUploadPropertyImageMutation,useAllPropertiesQuery,useApprovePropertyMutation
 }=propertyApiSlice
