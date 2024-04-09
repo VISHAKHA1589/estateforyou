@@ -6,7 +6,7 @@ function Services(){
 
           <p class="section-subtitle">Our Services</p>
 
-          <h2 class="h2 section-title">Our Main Focus</h2>
+          <h2 class="h2 section-title"><strong>Our Main Focus</strong></h2>
 
           <ul class="service-list">
 

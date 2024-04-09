@@ -17,7 +17,8 @@ function About() {
 
         <p class="section-subtitle">About Us</p>
 
-        <h2 class="h2 section-title">The Leading Real Estate Rental Marketplace.</h2>
+        <h2 class="h2 section-title "><strong>The Leading Real Estate Rental Marketplace.</strong></h2>
+        
 
         <p class="about-text">
           Over 39,000 people work for us in more than 70 countries all over the This breadth of global coverage,
