@@ -4,11 +4,11 @@ import { IonIcon } from '@ionic/react';
 import { homeOutline, leafOutline, wineOutline, shieldCheckmarkOutline } from 'ionicons/icons';
 function About() {
   return (
-  <section class="about" id="about">
+  <section class="about aos-init aos-animate" data-aos="zoom-in" data-aos-duration="2000" id="about">
     <div class="container">
 
       <figure class="about-banner">
-        <img src="../src/assets/images/about-banner-1.png" alt="House interior"/>
+        <img src="https://www.mkjproperties.in/assets/images/about-banner-1.png" alt="House interior"/>
 
         <img src="../src/assets/images/about-banner-2.jpg" alt="House interior" class="abs-img"/>
       </figure>

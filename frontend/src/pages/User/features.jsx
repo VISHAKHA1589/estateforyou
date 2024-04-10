@@ -18,7 +18,7 @@ return(
           <ion-icon name="car-sport-outline"></ion-icon>
         </div>
 
-        <h3 class="card-title">Parking Space</h3>
+        <h3 class="card-title">Interior</h3>
 
         <div class="card-btn">
           <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -34,7 +34,7 @@ return(
           <ion-icon name="water-outline"></ion-icon>
         </div>
 
-        <h3 class="card-title">Swimming Pool</h3>
+        <h3 class="card-title">Building planning</h3>
 
         <div class="card-btn">
           <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -50,7 +50,7 @@ return(
           <ion-icon name="shield-checkmark-outline"></ion-icon>
         </div>
 
-        <h3 class="card-title">Private Security</h3>
+        <h3 class="card-title">Constrction materials</h3>
 
         <div class="card-btn">
           <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -66,7 +66,7 @@ return(
           <ion-icon name="fitness-outline"></ion-icon>
         </div>
 
-        <h3 class="card-title">Medical Center</h3>
+        <h3 class="card-title">Home sanitary</h3>
 
         <div class="card-btn">
           <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -82,7 +82,7 @@ return(
           <ion-icon name="library-outline"></ion-icon>
         </div>
 
-        <h3 class="card-title">Library Area</h3>
+        <h3 class="card-title">Electricals</h3>
 
         <div class="card-btn">
           <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -98,7 +98,7 @@ return(
           <ion-icon name="bed-outline"></ion-icon>
         </div>
 
-        <h3 class="card-title">King Size Beds</h3>
+        <h3 class="card-title">Engineer Consulation</h3>
 
         <div class="card-btn">
           <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -114,7 +114,7 @@ return(
           <ion-icon name="home-outline"></ion-icon>
         </div>
 
-        <h3 class="card-title">Smart Homes</h3>
+        <h3 class="card-title">Mason consultation</h3>
 
         <div class="card-btn">
           <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -130,7 +130,7 @@ return(
           <ion-icon name="football-outline"></ion-icon>
         </div>
 
-        <h3 class="card-title">Kid’s Playland</h3>
+        <h3 class="card-title">Legal Services</h3>
 
         <div class="card-btn">
           <ion-icon name="arrow-forward-outline"></ion-icon>
