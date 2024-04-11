@@ -21,7 +21,7 @@ function About() {
             </svg>
           </span>
           <span class="rounded-full bg-indigo-500/10 px-3 py-1 text-sm font-semibold leading-6 text-cyan-500 ring-1 ring-inset ring-indigo-500/20">What's new</span>
-        <h2 class="h2 section-title "><strong>The Leading Real Estate Rental Marketplace.</strong></h2>
+        <h2 class="h2 section-title "><strong>The Leading Real Estate Rental Marketplace.</strong></h2> 
         
 
         <p class="about-text">
