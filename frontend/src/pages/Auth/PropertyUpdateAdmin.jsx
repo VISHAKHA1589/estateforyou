@@ -1,11 +1,12 @@
-import React, { useEffect } from 'react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useUpdatePropertyMutation, useDeletePropertyMutation, useGetPropertyByIdQuery } from '../../redux/api/propertyApiSlics';
 import { useFetchCategoriesQuery } from '../../redux/api/categoryApiSlice';
 import { toast } from 'react-toastify';
+import { useAuth0 } from "@auth0/auth0-react";
 import AdminMenu from '../Admin/AdminMenu';
 import Navigation from './Navigation';
+import Footer from "../User/Footer.jsx";
 
 const PropertyUpdate = () => {
   const params = useParams();
@@ -22,6 +23,8 @@ const PropertyUpdate = () => {
   const { data: categories = [] } = useFetchCategoriesQuery();
   const [updateProperty] = useUpdatePropertyMutation();
   const [deleteProperty] = useDeletePropertyMutation();
+  const { user, isAuthenticated } = useAuth0();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (propertyData && propertyData._id) {
@@ -34,6 +37,14 @@ const PropertyUpdate = () => {
       setImage1(propertyData.image1.url);
     }
   }, [propertyData]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,18 +60,18 @@ const PropertyUpdate = () => {
 
       if (data?.error) {
         toast.error(data.error, {
-          autoClose: 2000,
+          autoClose: 1000,
         });
       } else {
         toast.success(`Property successfully updated`, {
-          autoClose: 2000,
+          autoClose: 1000,
         });
-        navigate("/admin/allpropertieslist");
+        navigate("/");
       }
     } catch (err) {
       console.log(err);
       toast.error("Property update failed. Try again.", {
-        autoClose: 2000,
+        autoClose: 1000,
       });
     }
   };
@@ -72,21 +83,25 @@ const PropertyUpdate = () => {
 
       const { data } = await deleteProperty(params._id);
       toast.success(`"${data.name}" is deleted`, {
-        autoClose: 2000,
+        autoClose: 1000,
       });
       navigate('/admin/allpropertieslist');
     } catch (err) {
       console.log(err);
       toast.error('Delete failed. Try again.', {
-        autoClose: 2000,
+        autoClose: 1000,
       });
     }
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <>
       <Navigation />
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center h-screen mr-10 nunito-sans">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center h-full  mr-10 nunito-sans">
         <div className="flex flex-col md:flex-row">
           <div className="md:w-3/4 p-3">
             <div className="h-12 section-title text-2xl">Update / Delete Property</div>
@@ -182,7 +197,9 @@ const PropertyUpdate = () => {
             </form>
           </div>
         </div>
+
       </div>
+      <Footer/>
     </>
   );
 };

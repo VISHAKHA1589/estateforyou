@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useGetPropertyDetailsQuery } from '../../redux/api/propertyApiSlics';
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -6,22 +6,39 @@ import { useNavigate } from 'react-router-dom';
 import Navigation from './Navigation';
 import { useFetchCategoriesQuery } from '../../redux/api/categoryApiSlice';
 import Footer from './../User/Footer'
+import { useAuth0 } from "@auth0/auth0-react";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export function EnquiryForm() {
+  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
+  const navigate = useNavigate(); // Initialize useNavigate
+  const [loading, setLoading] = useState(true); // Introduce loading state
+  
+  useEffect(() => {
+    if (!isAuthenticated) {
+      loginWithRedirect();
+    } else {
+      const timer = setTimeout(() => {
+        setLoading(false);
+        navigate('/enquiry');
+      }, 1000);
+  
+      return () => clearTimeout(timer);
+    }
+  }, [isAuthenticated, loginWithRedirect, navigate]);
+  
   
   const { userInfo } = useSelector((state) => state.auth);
   const [formData, setFormData] = useState({
     name: '',
-    email: userInfo.email,
+    email: userInfo&& userInfo.email || isAuthenticated && user.email,
     phoneNumber: '',
     message: '',
     category: ''
   });
   const { data: categories } = useFetchCategoriesQuery();
   const [selectedCategory, setSelectedCategory] = useState(''); // State for selected category
-
-  const [loading, setLoading] = useState(false); // Introduce loading state
-  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -38,11 +55,12 @@ export function EnquiryForm() {
     setLoading(true); // Set loading to true during form submission
     try {
       await axios.post('http://localhost:5000/send-enquiry-email', formData);
+      toast.success("enquiry sent successfully")
       // Redirect to home page after successful submission
       navigate('/'); // Redirect to home page
     } catch (error) {
       console.error(error);
-      alert('Failed to send email');
+      toast.error('Failed to send email');
     } finally {
       setLoading(false); // Reset loading state after form submission
     }
@@ -52,7 +70,7 @@ export function EnquiryForm() {
     <div className="flex flex-col h-screen w-screen"> 
       <Navigation />
       <div className="flex-grow flex justify-center items-center">
-        <div className="w-full max-w-md p-8 bg-white  shadow-2xl rounded-xl">
+        <div className="w-full max-w-md p-8 bg-white shadow-2xl rounded-xl">
           <h2 className="text-xl font-semibold mb-4 section-title">Enquiry Form</h2>
           <form className="space-y-4">
             <div>
@@ -104,33 +122,20 @@ export function EnquiryForm() {
                 onChange={handleChange}
               ></textarea>
             </div>
-            <div>
+            <div className="flex justify-center items-center">
               <button 
                 onClick={handleSubmit} 
-                className="w-full bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 text-center"
+                className="w-64 bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 text-center"
                 disabled={loading} // Disable button when loading
               >
                 {loading ? 'Sending...' : 'Send Enquiry'}
-              </button>
-            </div>
-            <div>
-              <button 
-                onClick={() => {
-                  const phoneNumber = '9774573178'; // Replace with the actual phone number
-                  const message = encodeURIComponent(`Hello, I am ${formData.name}, i am enquiring abour ${formData.category} and my message is: ${formData.message}`); // Encode the message
-                  const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
-                  window.open(whatsappUrl, '_blank');
-                }} 
-                className="w-full bg-green-500 text-white rounded-md px-4 py-2 hover:bg-green-600 text-center"
-                disabled={loading} // Disable button when loading
-              >
-                Contact Us on WhatsApp
               </button>
             </div>
           </form>
         </div>
       </div>
       <Footer/>
+      <ToastContainer /> {/* Add ToastContainer for displaying notifications */}
     </div>
   );
 }

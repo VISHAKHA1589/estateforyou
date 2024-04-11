@@ -17,13 +17,13 @@ const PropertyPage = () => {
   const cardRef = useRef(null);
   const { userInfo } = useSelector(state => state.auth);
 
-  const { user, isAuthenticated } = useAuth0(); // Use useAuth0 hook here
+  const { user, isAuthenticated, loginWithRedirect } = useAuth0(); // Use useAuth0 hook here
 
   useEffect(() => {
-    if (!user || !userInfo) {
-      navigate('/login');
+    if (!isAuthenticated) {
+      loginWithRedirect();
     }
-  }, [navigate, userInfo, user]); // Include user in the dependencies array
+  }, [isAuthenticated, loginWithRedirect]);
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -41,7 +41,7 @@ const PropertyPage = () => {
     if (user || userInfo) {
       setShowCard(!showCard);
     } else {
-      navigate('/login');
+      loginWithRedirect(); // Redirect to login if user is not authenticated
     }
   };
 
