@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import moment from "moment";
 import { useAllPropertiesQuery } from "../../redux/api/propertyApiSlics";
 import AdminMenu from "./AdminMenu";
 import Navigation from "../Auth/Navigation";
@@ -20,11 +19,11 @@ const AllProperties = () => {
       <Navigation />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row">
-          <div className="p-3">
+          <div className="p-3 md:w-3/4 lg:w-full">
             <div className="ml-2 text-3xl font-bold mb-6">
               All Properties ({properties.length})
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {properties.map((property) => (
                 <Link
@@ -41,21 +40,17 @@ const AllProperties = () => {
                       />
                     )}
                     <div className="absolute inset-0 bg-black opacity-40"></div>
-                    <div className="absolute inset-0 flex justify-center items-center">
-                      
-                    </div>
+                    <div className="absolute inset-0 flex justify-center items-center"></div>
                   </div>
                   <div className="p-4">
-                    <p className="text-gray-600 text-sm mb-2">
-                      {property.name}
-                    </p>
+                    <p className="text-gray-600 text-sm mb-2">{property.name}</p>
                     <p className="text-gray-700 text-sm mb-4">
                       {property?.description?.substring(0, 160)}...
                     </p>
                     <div className="flex justify-between items-center">
                       <Link
                         to={`/property/update/${property._id}`}
-                        className="inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-pink-600 rounded-md hover:bg-pink-700 focus:ring-2 focus:ring-pink-500 focus:outline-none"
+                        className="inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-blue-600 rounded-md hover:bg-pink-700 focus:ring-2 focus:ring-pink-500 focus:outline-none"
                       >
                         Update
                         <svg
@@ -74,7 +69,7 @@ const AllProperties = () => {
                           />
                         </svg>
                       </Link>
-                      
+
                       <p className="text-gray-800 font-semibold">${property?.price}</p>
                     </div>
                   </div>
