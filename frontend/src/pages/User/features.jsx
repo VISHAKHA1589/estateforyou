@@ -7,7 +7,7 @@ return(
 
   <p class="section-subtitle">Our Aminities</p>
 
-  <h2 class="h2 section-title">Building Aminities</h2>
+  <h2 class="h2 section-title"><strong>Building Aminities</strong></h2>
 
   <ul class="features-list">
 
@@ -15,10 +15,10 @@ return(
       <a href="#" class="features-card">
 
         <div class="card-icon">
-          <ion-icon name="car-sport-outline"></ion-icon>
+          <img src="https://static.vecteezy.com/system/resources/previews/008/963/105/original/furniture-gallery-interior-logo-design-vector.jpg" alt="iconimg "></img>
         </div>
 
-        <h3 class="card-title">Parking Space</h3>
+        <h3 class="card-title">Interior</h3>
 
         <div class="card-btn">
           <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -31,10 +31,10 @@ return(
       <a href="#" class="features-card">
 
         <div class="card-icon">
-          <ion-icon name="water-outline"></ion-icon>
+        <img src="https://png.pngtree.com/png-clipart/20200727/original/pngtree-real-estate-logo-design-template-building-logo-png-image_5137696.jpg" alt="iconimg"></img>
         </div>
 
-        <h3 class="card-title">Swimming Pool</h3>
+        <h3 class="card-title">Building planning</h3>
 
         <div class="card-btn">
           <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -47,10 +47,10 @@ return(
       <a href="#" class="features-card">
 
         <div class="card-icon">
-          <ion-icon name="shield-checkmark-outline"></ion-icon>
+        <img src="https://static.vecteezy.com/system/resources/previews/007/794/715/large_2x/construction-logo-template-suitable-for-construction-company-brand-format-and-easy-to-edit-free-vector.jpg" alt="iconimg"></img>
         </div>
 
-        <h3 class="card-title">Private Security</h3>
+        <h3 class="card-title">Constrction materials</h3>
 
         <div class="card-btn">
           <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -63,10 +63,10 @@ return(
       <a href="#" class="features-card">
 
         <div class="card-icon">
-          <ion-icon name="fitness-outline"></ion-icon>
+        <img src="https://th.bing.com/th/id/OIP.gpJUZFWu1DerQmrq51a--gAAAA?w=238&h=250&rs=1&pid=ImgDetMain" alt="iconimg"></img>
         </div>
 
-        <h3 class="card-title">Medical Center</h3>
+        <h3 class="card-title">Home sanitary</h3>
 
         <div class="card-btn">
           <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -79,10 +79,10 @@ return(
       <a href="#" class="features-card">
 
         <div class="card-icon">
-          <ion-icon name="library-outline"></ion-icon>
+        <img src="https://thumbs.dreamstime.com/b/electricity-logo-vector-art-logo-template-your-business-electricity-logo-vector-art-logo-template-your-business-abstract-111220452.jpg" alt="iconimg"></img>
         </div>
 
-        <h3 class="card-title">Library Area</h3>
+        <h3 class="card-title">Electricals</h3>
 
         <div class="card-btn">
           <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -95,10 +95,10 @@ return(
       <a href="#" class="features-card">
 
         <div class="card-icon">
-          <ion-icon name="bed-outline"></ion-icon>
+        <img src="https://bcassetcdn.com/public/blog/wp-content/uploads/2019/07/18094634/blue-chart-consulting.png" alt="iconimg"></img>
         </div>
 
-        <h3 class="card-title">King Size Beds</h3>
+        <h3 class="card-title">Engineer Consulation</h3>
 
         <div class="card-btn">
           <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -111,10 +111,10 @@ return(
       <a href="#" class="features-card">
 
         <div class="card-icon">
-          <ion-icon name="home-outline"></ion-icon>
+        <img src="https://th.bing.com/th/id/OIP.Fo_zBrbMI0XWAhaOXqsg1QHaHa?rs=1&pid=ImgDetMain" alt="iconimg"></img>
         </div>
 
-        <h3 class="card-title">Smart Homes</h3>
+        <h3 class="card-title">Mason consultation</h3>
 
         <div class="card-btn">
           <ion-icon name="arrow-forward-outline"></ion-icon>
@@ -127,10 +127,10 @@ return(
       <a href="#" class="features-card">
 
         <div class="card-icon">
-          <ion-icon name="football-outline"></ion-icon>
+        <img src="https://th.bing.com/th/id/OIP.vDf41ubAq7i62OjVknJapwHaHa?rs=1&pid=ImgDetMain" alt="iconimg"></img>
         </div>
 
-        <h3 class="card-title">Kid’s Playland</h3>
+        <h3 class="card-title">Legal Services</h3>
 
         <div class="card-btn">
           <ion-icon name="arrow-forward-outline"></ion-icon>

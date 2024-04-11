@@ -8,19 +8,27 @@ function Container(){
 
       <div class="cta-card">
         <div class="card-content">
-          <h2 class="h2 card-title">Looking for a dream home?</h2>
-
-          <p class="card-text">We can help you realize your dream of a new home</p>
+        <header class="py-10  text-center">
+        <div class="container mx-auto px-4">
+            <h1 class="text-5xl font-bold text-white mb-4">👋 Hey there! Are you looking for a home? </h1>
+            <p class="mt-2 text-lg text-gray-200">Come here and contact us...</p>
         </div>
-
-        <button class="btn cta-btn">
-          <span>Explore Properties</span>
+        
+    </header>
+    <button class="btn cta-btn">
+          <span>CONTACT US</span>
 
           <ion-icon name="arrow-forward-outline"></ion-icon>
         </button>
+        
+        </div>
+
+        
       </div>
+      
 
     </div>
+    
   </section>
 
 

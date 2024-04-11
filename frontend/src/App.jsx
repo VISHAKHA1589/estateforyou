@@ -3,6 +3,7 @@ import Hero from "./pages/User/Hero";
 import './App.css'
 import About from "./pages/User/About";
 import Services from "./pages/User/Services";
+import Vedio from "./pages/User/vedio";
 import SellSmall from "./pages/User/sellSmall";
 import Features from "./pages/User/features";
 import Flats from "./pages/User/rentsmall";
@@ -21,6 +22,7 @@ function App() {
   <Hero/>
   <About/>
   <Services/>
+  <Vedio/>
  <SellSmall/>
   <Features/>
   <Flats/>
