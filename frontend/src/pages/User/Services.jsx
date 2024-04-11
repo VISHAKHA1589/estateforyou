@@ -6,7 +6,13 @@ function Services(){
 
           <p class="section-subtitle">Our Services</p>
 
-          <h2 class="h2 section-title"><strong>Our Main Focus</strong></h2>
+          <h2 class="h2 section-title text-gray-100 font-extrabold text-4xl xs:text-4xl md:text-4xl"><span class="text-black">
+Right Place To
+</span>
+<span class="text-black">
+Get a Better and Professionals Design
+</span></h2>
+
 
           <ul class="service-list">
 
@@ -14,7 +20,7 @@ function Services(){
               <div class="service-card">
 
                 <div class="card-icon">
-                  <img src="../src/assets/images/service-1.png" alt="Service icon"/>
+                  <img src="https://mkjproperties.in/assets/images/1.png" alt="Service icon"/>
                 </div>
 
                 <h3 class="h3 card-title">
@@ -27,7 +33,7 @@ function Services(){
                 </p>
 
                 <a href="#" class="card-link">
-                  <span>Find A Home</span>
+                  <span>Buy A Home</span>
 
                   <ion-icon name="arrow-forward-outline"></ion-icon>
                 </a>
@@ -39,7 +45,7 @@ function Services(){
               <div class="service-card">
 
                 <div class="card-icon">
-                  <img src="../src/assets/images/service-2.png" alt="Service icon"/>
+                  <img src="https://marqueehomesutah.com/wp-content/uploads/2021/11/Untitled-design-31-1.png" alt="Service icon"/>
                 </div>
 
                 <h3 class="h3 card-title">
@@ -52,7 +58,7 @@ function Services(){
                 </p>
 
                 <a href="#" class="card-link">
-                  <span>Find A Home</span>
+                  <span>Rent A Home</span>
 
                   <ion-icon name="arrow-forward-outline"></ion-icon>
                 </a>
@@ -64,7 +70,7 @@ function Services(){
               <div class="service-card">
 
                 <div class="card-icon">
-                  <img src="../src/assets/images/service-3.png" alt="Service icon"/>
+                  <img src="https://mkjproperties.in/assets/images/4.png" alt="Service icon"/>
                 </div>
 
                 <h3 class="h3 card-title">
@@ -77,7 +83,7 @@ function Services(){
                 </p>
 
                 <a href="#" class="card-link">
-                  <span>Find A Home</span>
+                  <span>Sell A Home</span>
 
                   <ion-icon name="arrow-forward-outline"></ion-icon>
                 </a>
