@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCreatePropertyMutation } from '../../../src/redux/api/propertyApiSlics.js';
 import { toast } from 'react-toastify';
@@ -9,6 +9,17 @@ import Footer from "../User/Footer.jsx";
 import { useAuth0 } from "@auth0/auth0-react";
 
 const PropertyList = () => {
+
+  const { userInfo } = useSelector(state => state.auth);
+
+  const { user, isAuthenticated, loginWithRedirect } = useAuth0(); // Use useAuth0 hook here
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      loginWithRedirect();
+    }
+  }, [isAuthenticated, loginWithRedirect]);
+
   const [images, setImages] = useState(['', '', '', '']);
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
@@ -18,10 +29,9 @@ const PropertyList = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [imageUrls, setImageUrls] = useState(['', '', '', '']);
   const navigate = useNavigate();
-  const { user, isAuthenticated } = useAuth0();
 
   const { data: categories } = useFetchCategoriesQuery();
- 
+
 
   const [createProperty] = useCreatePropertyMutation();
 
@@ -44,7 +54,7 @@ const PropertyList = () => {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append("image", file);
-  
+
     try {
       setFileToBase(index, file);
       const imageUrl = URL.createObjectURL(file);
@@ -59,7 +69,7 @@ const PropertyList = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       const propertyData = new FormData();
       propertyData.append("owner", user.email);
@@ -73,8 +83,8 @@ const PropertyList = () => {
       propertyData.append("category", category);
       propertyData.append("address", address);
       propertyData.append("phoneNumber", phoneNumber);
-     
-  
+
+
       const { data } = await createProperty(propertyData);
       if (data && data.error) {
         toast.error(data.error);
@@ -93,7 +103,7 @@ const PropertyList = () => {
       <Navigation />
       <div className="flex justify-center items-center h-full lg:ml-60">
         <div className="container xl:mx-[9rem] sm:mx-[0]">
-          <div className="flex flex-col md:flex-row">
+          <div className="flex falex-col md:flex-row">
             <div className="md:w-3/4 p-3">
               <div className="h-12 section-title text-2xl">Post a Property</div>
 
@@ -162,8 +172,8 @@ const PropertyList = () => {
                     </select>
                   </div>
                 )}
+                <button onClick={handleSubmit} className='bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full mt-4 cursor-pointer text-center'>Submit</button>
               </div>
-              <button onClick={handleSubmit} className='bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full mt-4 cursor-pointer text-center'>Submit</button>
             </div>
           </div>
         </div>
