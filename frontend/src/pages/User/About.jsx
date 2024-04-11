@@ -8,7 +8,6 @@ function About() {
     <div class="container">
       <figure class="about-banner shadow-2xl">
         <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=1858&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="House interior"/>
-
         <img src="https://plus.unsplash.com/premium_photo-1681825038820-3881edc197f7?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="House interior" class="abs-img"/>
       </figure>
 
