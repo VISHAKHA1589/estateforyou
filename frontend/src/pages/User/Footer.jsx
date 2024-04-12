@@ -9,8 +9,8 @@ function Footer()
 
         <div class="footer-brand">
 
-          <a href="#" class="logo">
-            <img src="./assets/images/logo-light.png" alt="Homeverse logo"/>
+          <a href="#" class="logo bg-white">
+            <img src="../src/assets/images/logo.png" alt="Homeverse logo"/>
           </a>
 
           <p class="section-text">
