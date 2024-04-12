@@ -9,9 +9,11 @@ function Footer()
 
               <div class="footer-brand">
 
-                <a href="#" class="logo">
-                  <img src="./assets/images/logo-light.png" alt="Homeverse logo"/>
-                </a>
+
+          <a href="#" class="logo bg-white">
+            <img src="../src/assets/images/logo.png" alt="Homeverse logo"/>
+          </a>
+
 
                 <p class="section-text">
                   Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is dummy text of the printing.
