@@ -3,7 +3,7 @@ import './services.css'
 function Container(){
   function openWhatsApp() {
 
-    let phoneNumber = '1234567890';
+    let phoneNumber = '6009396197';
     let message = encodeURIComponent('Hello! I would like to inquire about...');
     let whatsappLink = `https://wa.me/${phoneNumber}?text=${message}`;
     window.open(whatsappLink);
