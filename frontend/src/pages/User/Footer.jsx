@@ -1,200 +1,202 @@
 function Footer()
 {
   return(
-    <div>
-    <footer class="footer">
+      <div>
+        <footer class="footer">
 
-    <div class="footer-top">
-      <div class="container">
+          <div class="footer-top">
+            <div class="container">
 
-        <div class="footer-brand">
+              <div class="footer-brand">
+
 
           <a href="#" class="logo bg-white">
             <img src="../src/assets/images/logo.png" alt="Homeverse logo"/>
           </a>
 
-          <p class="section-text">
-            Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is dummy text of the printing.
-          </p>
 
-          <ul class="contact-list">
+                <p class="section-text">
+                  Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is dummy text of the printing.
+                </p>
 
-            <li>
-              <a href="#" class="contact-link">
-                <ion-icon name="location-outline"></ion-icon>
+                <ul class="contact-list">
 
-                <address>Brooklyn, New York, United States</address>
-              </a>
-            </li>
+                  <li>
+                    <a href="#" class="contact-link">
+                      <ion-icon name="location-outline"></ion-icon>
 
-            <li>
-              <a href="tel:+0123456789" class="contact-link">
-                <ion-icon name="call-outline"></ion-icon>
+                      <address>Brooklyn, New York, United States</address>
+                    </a>
+                  </li>
 
-                <span>+0123-456789</span>
-              </a>
-            </li>
+                  <li>
+                    <a href="tel:+0123456789" class="contact-link">
+                      <ion-icon name="call-outline"></ion-icon>
 
-            <li>
-              <a href="mailto:contact@homeverse.com" class="contact-link">
-                <ion-icon name="mail-outline"></ion-icon>
+                      <span>+0123-456789</span>
+                    </a>
+                  </li>
 
-                <span>contact@homeverse.com</span>
-              </a>
-            </li>
+                  <li>
+                    <a href="mailto:contact@homeverse.com" class="contact-link">
+                      <ion-icon name="mail-outline"></ion-icon>
 
-          </ul>
+                      <span>contact@homeverse.com</span>
+                    </a>
+                  </li>
 
-          <ul class="social-list">
+                </ul>
 
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-facebook"></ion-icon>
-              </a>
-            </li>
+                <ul class="social-list">
 
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-twitter"></ion-icon>
-              </a>
-            </li>
+                  <li>
+                    <a href="#" class="social-link">
+                      <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                  </li>
 
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-linkedin"></ion-icon>
-              </a>
-            </li>
+                  <li>
+                    <a href="#" class="social-link">
+                      <ion-icon name="logo-twitter"></ion-icon>
+                    </a>
+                  </li>
 
-            <li>
-              <a href="#" class="social-link">
-                <ion-icon name="logo-youtube"></ion-icon>
-              </a>
-            </li>
+                  <li>
+                    <a href="#" class="social-link">
+                      <ion-icon name="logo-linkedin"></ion-icon>
+                    </a>
+                  </li>
 
-          </ul>
+                  <li>
+                    <a href="#" class="social-link">
+                      <ion-icon name="logo-youtube"></ion-icon>
+                    </a>
+                  </li>
 
-        </div>
+                </ul>
 
-        <div class="footer-link-box">
+              </div>
 
-          <ul class="footer-list">
+              <div class="footer-link-box">
 
-            <li>
-              <p class="footer-list-title">Company</p>
-            </li>
+                <ul class="footer-list">
 
-            <li>
-              <a href="#" class="footer-link">About</a>
-            </li>
+                  <li>
+                    <p class="footer-list-title">Company</p>
+                  </li>
 
-            <li>
-              <a href="#" class="footer-link">Blog</a>
-            </li>
+                  <li>
+                    <a href="#" class="footer-link">About</a>
+                  </li>
 
-            <li>
-              <a href="#" class="footer-link">All Products</a>
-            </li>
+                  <li>
+                    <a href="#" class="footer-link">Blog</a>
+                  </li>
 
-            <li>
-              <a href="#" class="footer-link">Locations Map</a>
-            </li>
+                  <li>
+                    <a href="#" class="footer-link">All Products</a>
+                  </li>
 
-            <li>
-              <a href="#" class="footer-link">FAQ</a>
-            </li>
+                  <li>
+                    <a href="#" class="footer-link">Locations Map</a>
+                  </li>
 
-            <li>
-              <a href="#" class="footer-link">Contact us</a>
-            </li>
+                  <li>
+                    <a href="#" class="footer-link">FAQ</a>
+                  </li>
 
-          </ul>
+                  <li>
+                    <a href="#" class="footer-link">Contact us</a>
+                  </li>
 
-          <ul class="footer-list">
+                </ul>
 
-            <li>
-              <p class="footer-list-title">Services</p>
-            </li>
+                <ul class="footer-list">
 
-            <li>
-              <a href="#" class="footer-link">Order tracking</a>
-            </li>
+                  <li>
+                    <p class="footer-list-title">Services</p>
+                  </li>
 
-            <li>
-              <a href="#" class="footer-link">Wish List</a>
-            </li>
+                  <li>
+                    <a href="#" class="footer-link">Order tracking</a>
+                  </li>
 
-            <li>
-              <a href="#" class="footer-link">Login</a>
-            </li>
+                  <li>
+                    <a href="#" class="footer-link">Wish List</a>
+                  </li>
 
-            <li>
-              <a href="#" class="footer-link">My account</a>
-            </li>
+                  <li>
+                    <a href="#" class="footer-link">Login</a>
+                  </li>
 
-            <li>
-              <a href="#" class="footer-link">Terms & Conditions</a>
-            </li>
+                  <li>
+                    <a href="#" class="footer-link">My account</a>
+                  </li>
 
-            <li>
-              <a href="#" class="footer-link">Promotional Offers</a>
-            </li>
+                  <li>
+                    <a href="#" class="footer-link">Terms & Conditions</a>
+                  </li>
 
-          </ul>
+                  <li>
+                    <a href="#" class="footer-link">Promotional Offers</a>
+                  </li>
 
-          <ul class="footer-list">
+                </ul>
 
-            <li>
-              <p class="footer-list-title">Customer Care</p>
-            </li>
+                <ul class="footer-list">
 
-            <li>
-              <a href="#" class="footer-link">Login</a>
-            </li>
+                  <li>
+                    <p class="footer-list-title">Customer Care</p>
+                  </li>
 
-            <li>
-              <a href="#" class="footer-link">My account</a>
-            </li>
+                  <li>
+                    <a href="#" class="footer-link">Login</a>
+                  </li>
 
-            <li>
-              <a href="#" class="footer-link">Wish List</a>
-            </li>
+                  <li>
+                    <a href="#" class="footer-link">My account</a>
+                  </li>
 
-            <li>
-              <a href="#" class="footer-link">Order tracking</a>
-            </li>
+                  <li>
+                    <a href="#" class="footer-link">Wish List</a>
+                  </li>
 
-            <li>
-              <a href="#" class="footer-link">FAQ</a>
-            </li>
+                  <li>
+                    <a href="#" class="footer-link">Order tracking</a>
+                  </li>
 
-            <li>
-              <a href="#" class="footer-link">Contact us</a>
-            </li>
+                  <li>
+                    <a href="#" class="footer-link">FAQ</a>
+                  </li>
 
-          </ul>
+                  <li>
+                    <a href="#" class="footer-link">Contact us</a>
+                  </li>
 
-        </div>
+                </ul>
+
+              </div>
+
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <div class="container">
+
+              <p class="copyright">
+                &copy; 2024 <a href="#">Estate4u</a>. All Rights Reserved
+              </p>
+
+            </div>
+          </div>
+
+        </footer>
+
 
       </div>
-    </div>
-
-    <div class="footer-bottom">
-      <div class="container">
-
-        <p class="copyright">
-          &copy; 2024 <a href="#">Estate4u</a>. All Rights Reserved
-        </p>
-
-      </div>
-    </div>
-
-  </footer>
 
 
-</div>
-
-
-)}
+  )}
 
 
 export default Footer;

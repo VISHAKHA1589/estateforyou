@@ -1534,3 +1534,30 @@ button, a { transition: var(--transition); }
   .footer-link-box { flex-basis: 700px; }
 
 }
+
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 8px); /* Position the dropdown just below the profile button */
+  left: 500px; /* Align the dropdown with the left edge of the button */
+  background-color: #ffffff; /* Set background color */
+  border: 1px solid #cccccc; /* Add a border */
+  border-radius: 4px; /* Add border radius */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow */
+  z-index: 1000; /* Set a high z-index to ensure it appears above other elements */
+  /* Additional styling */
+  padding: 8px 0;
+  min-width: 200px; /* Set a minimum width for the dropdown */
+}
+
+.profile-dropdown-item {
+  display: block;
+  padding: 8px 16px;
+  color: #333333;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.profile-dropdown-item:hover {
+  background-color: #f0f0f0; /* Change background color on hover */
+}
+

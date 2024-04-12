@@ -30,13 +30,11 @@ function Login() {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    // Basic email validation
     if (!email || !email.includes('@') || !email.includes('.')) {
       setError('Please enter a valid email address');
       return;
     }
 
-    // Basic password validation
     if (!password || password.length < 6) {
       setPasswordError('Password must be at least 6 characters long');
       return;
@@ -60,15 +58,13 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className="min-h-screen bg-gray-100 flex flex-col">
       <Navigation />
-      <div className="bg-gray-100 min-h-screen flex justify-center items-center">
-        <div className="max-w-md w-full lg:p-8 md:p-6 sm:p-4 bg-white shadow-lg rounded-lg">
-          <h1 className="text-2xl font-semibold mb-4 text-center">Login</h1>
-          {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
-          {passwordError && <p className="text-red-500 mb-4 text-center">{passwordError}</p>}
+      <div className="flex-1 flex items-center justify-center">
+        <div className="max-w-md w-full p-6 bg-white shadow-lg rounded-lg">
+          <h1 className="text-3xl font-semibold mb-4 text-center text-gray-800">Welcome back!</h1>
           <form onSubmit={submitHandler}>
-            <div className="mb-4">
+            <div className="mb-6">
               <label htmlFor="email" className="block text-gray-600">Email Address</label>
               <input
                 type="email"
@@ -79,8 +75,9 @@ function Login() {
                 className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
                 autoComplete="on"
               />
+              {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
             </div>
-            <div className="mb-4">
+            <div className="mb-6">
               <label htmlFor="password" className="block text-gray-600">Password</label>
               <input
                 type="password"
@@ -91,21 +88,22 @@ function Login() {
                 className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
                 autoComplete="current-password" // Change to "current-password" for password managers
               />
+              {passwordError && <p className="text-red-500 text-sm mt-1">{passwordError}</p>}
             </div>
             <button
               disabled={isLoading}
               type="submit"
-              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full cursor-pointer text-center"
+              className="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-md py-2 px-4 w-full cursor-pointer"
             >
               {isLoading ? "Logging in..." : "Login"}
             </button>
           </form>
-          <div className="mt-6 text-blue-500 text-center">
-            <Link to={redirect ? `/register?redirect=${redirect}` : `/register`} className="hover:underline">Don't have an account? Sign up Here</Link>
+          <div className="mt-6 text-center">
+            <p className="text-gray-600">Don't have an account? <Link to={redirect ? `/register?redirect=${redirect}` : `/register`} className="text-blue-500 hover:underline">Sign up here</Link></p>
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

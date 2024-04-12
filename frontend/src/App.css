@@ -68,6 +68,44 @@
   #RESET
 \*-----------------------------------*/
 
+.profile-dropdown {
+  position: absolute;
+  top: 90%; /* Position dropdown below the profile button */
+  right:14%; /* Align dropdown to the right edge of the button */
+  background-color: #ffffff; /* Set background color */
+  border: 1px solid #ccc; /* Add border */
+  border-radius: 4px; /* Add border radius for rounded corners */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  z-index: 1000; /* Ensure dropdown is on top of other elements */
+}
+
+/* Style profile dropdown items */
+.profile-dropdown-item {
+  display: block;
+  padding: 8px 16px;
+  min-width: 150px;
+  color: #333333;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+/* Change background color slightly on hover */
+.profile-dropdown-item:hover {
+  background-color: #f0f0f0; /* Slightly lighter background color on hover */
+}
+
+
+@media (max-width: 768px) {
+  .profile-dropdown {
+    display: none;
+  }
+}
+
+
+
+
+
+
 *, *::before, *::after {
   margin: 0;
   padding: 0;
@@ -84,11 +122,7 @@ span,
 button,
 ion-icon { display: block; }
 
-.header-bottom-actions-btn:nth-of-type(1) img{
- 
-  width: 50px;
-  height: 50px;
-  border-radius: 100%;}
+
 
   
 button {
@@ -257,13 +291,7 @@ button, a { transition: var(--transition); }
 .has-scrollbar::-webkit-scrollbar-button { width: 15%; }
 
 
-@media (max-width: 600px) {
-  .header-bottom-actions-btn:nth-of-type(1) img {
-    height: 30px;
-    width: 30px;
-    margin-top: -4px;
-  }
-}
+
 
 
 /*-----------------------------------*\
@@ -1215,7 +1243,26 @@ button, a { transition: var(--transition); }
   margin-left: -20px;
   margin-top: 8px;
 }
+@media (max-width: 768px) {
 
+  
+  .profilemenu{
+    display:none;
+  }
+  .profile{
+    display:none;
+    visibility: hidden;
+  }
+}
+
+@media (min-width: 768px) {
+
+  
+  .profile-sidebar{
+    display:none;
+  }
+ 
+}
 
 
 
@@ -1225,6 +1272,7 @@ button, a { transition: var(--transition); }
  */
 
 @media (min-width: 768px) {
+  
 
   /**
    * CUSTOM PROPERTY
@@ -1295,12 +1343,7 @@ button, a { transition: var(--transition); }
    
   }
 
-  .header-bottom-actions-btn:nth-of-type(1) {
-    background: none;
-    width: 50px;
-    height: 50px;
-   
-  }
+
 
 
 
@@ -1568,7 +1611,7 @@ button, a { transition: var(--transition); }
 
   .header-bottom { padding-block: 20px; }
 
-  .header-bottom-actions-btn:last-child,
+  .header-bottom-actions-btn:nth-of-type(3),
   .navbar-top,
   .overlay { display: none; }
 

@@ -69,7 +69,7 @@ app.post('/send-email', async (req, res) => {
   try {
     await transporter.sendMail({
       from: 'bidhimalakar@gmail.com',
-      to: 'bishakham3@gmail.com', // Owner's email address
+      to: 'Estate4Uservices@gmail.com', // Owner's email address
       subject: 'property details enquiry',
       text: `Hi there, ${name}\nEmail: ${email}\nPhone Number: ${phoneNumber} has just requested details about the property\nProperty Name: ${propertyName}\nProperty Owner: ${propertyOwner}\nOwner Contact Number: ${propertyPhoneNumber}`
     });
@@ -102,7 +102,7 @@ app.post('/send-enquiry-email', async (req, res) => {
   try {
     await transporter.sendMail({
       from: 'bidhimalakar@gmail.com',
-      to: 'bishakham3@gmail.com', // Owner's email address
+      to: 'Estate4Uservices@gmail.com', // Owner's email address
       subject: 'New Property Inquiry',
       text: `Hi there,
         A new inquiry has just been made by:

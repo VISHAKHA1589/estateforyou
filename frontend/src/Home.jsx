@@ -3,7 +3,7 @@ import Hero from "./pages/User/Hero";
 import './App.css'
 import About from "./pages/User/About";
 import Services from "./pages/User/Services";
-import vedio from "./pages/User/vedio";
+
 import Features from "./pages/User/features";
 import Flats from "./pages/User/rentsmall";
 import Container from "./pages/User/container";
@@ -26,7 +26,6 @@ function Home() {
   <Hero/>
   <About/>
   <Services/>
-  <vedio/>
  <SellSmall/>
   <Features/>
   <Flats/>

@@ -6,6 +6,7 @@ import { toast } from 'react-toastify';
 import { useAuth0 } from "@auth0/auth0-react";
 import AdminMenu from '../Admin/AdminMenu';
 import Navigation from './Navigation';
+import Footer from "../User/Footer.jsx";
 
 const PropertyUpdate = () => {
   const params = useParams();
@@ -100,7 +101,7 @@ const PropertyUpdate = () => {
   return (
     <>
       <Navigation />
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center h-screen mr-10 nunito-sans">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-center items-center h-full  mr-10 nunito-sans">
         <div className="flex flex-col md:flex-row">
           <div className="md:w-3/4 p-3">
             <div className="h-12 section-title text-2xl">Update / Delete Property</div>
@@ -196,7 +197,9 @@ const PropertyUpdate = () => {
             </form>
           </div>
         </div>
+
       </div>
+      <Footer/>
     </>
   );
 };

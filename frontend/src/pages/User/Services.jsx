@@ -1,7 +1,7 @@
-
+import {Link} from 'react-router-dom';
 function Services(){
   return(
-  <section class="service" id="service">
+      <section class="service" id="service">
         <div class="container">
 
           <p class="section-subtitle">Our Services</p>
@@ -9,7 +9,7 @@ function Services(){
           <h2 class="h2 section-title text-gray-100 font-extrabold text-4xl xs:text-4xl md:text-4xl"><span class="text-black">
 Right Place To
 </span>
-<span class="text-black">
+            <span class="text-black">
 Get a Better and Professionals Design
 </span></h2>
 
@@ -24,7 +24,7 @@ Get a Better and Professionals Design
                 </div>
 
                 <h3 class="h3 card-title">
-                  <a href="#">Buy a home</a>
+                  <Link to={'/forSale'}> Buy a home</Link>
                 </h3>
 
                 <p class="card-text">
@@ -32,11 +32,11 @@ Get a Better and Professionals Design
                   to call home.
                 </p>
 
-                <a href="#" class="card-link">
+                <Link to={'/forSale'} class="card-link">
                   <span>Buy A Home</span>
 
                   <ion-icon name="arrow-forward-outline"></ion-icon>
-                </a>
+                </Link>
 
               </div>
             </li>
@@ -49,7 +49,7 @@ Get a Better and Professionals Design
                 </div>
 
                 <h3 class="h3 card-title">
-                  <a href="#">Rent a home</a>
+                  <Link to={'/forRent'} >Rent a home</Link>
                 </h3>
 
                 <p class="card-text">
@@ -57,11 +57,11 @@ Get a Better and Professionals Design
                   to call home.
                 </p>
 
-                <a href="#" class="card-link">
+                <Link to={'/forRent'} class="card-link">
                   <span>Rent A Home</span>
 
                   <ion-icon name="arrow-forward-outline"></ion-icon>
-                </a>
+                </Link>
 
               </div>
             </li>
@@ -74,7 +74,7 @@ Get a Better and Professionals Design
                 </div>
 
                 <h3 class="h3 card-title">
-                  <a href="#">Sell a home</a>
+                  <Link to={'/propertylist'}>Sell a home</Link>
                 </h3>
 
                 <p class="card-text">
@@ -82,11 +82,11 @@ Get a Better and Professionals Design
                   to call home.
                 </p>
 
-                <a href="#" class="card-link">
+                <Link to={'/propertylist'} class="card-link">
                   <span>Sell A Home</span>
 
                   <ion-icon name="arrow-forward-outline"></ion-icon>
-                </a>
+                </Link>
 
               </div>
             </li>
@@ -96,7 +96,7 @@ Get a Better and Professionals Design
         </div>
       </section>
 
-);
+  );
 }
 
 export default Services;
