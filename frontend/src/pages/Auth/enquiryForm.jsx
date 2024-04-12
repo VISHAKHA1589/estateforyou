@@ -11,9 +11,17 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export function EnquiryForm() {
+
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const navigate = useNavigate(); // Initialize useNavigate
   const [loading, setLoading] = useState(true); // Introduce loading state
+    function openWhatsApp() {
+
+      let phoneNumber = '1234567890';
+      let message = encodeURIComponent('Hello! I would like to inquire about...');
+      let whatsappLink = `https://wa.me/${phoneNumber}?text=${message}`;
+      window.open(whatsappLink);}
+
   
   useEffect(() => {
     if (!isAuthenticated) {
@@ -56,8 +64,7 @@ export function EnquiryForm() {
     try {
       await axios.post('http://localhost:5000/send-enquiry-email', formData);
       toast.success("enquiry sent successfully")
-      // Redirect to home page after successful submission
-      navigate('/'); // Redirect to home page
+      navigate('/');
     } catch (error) {
       console.error(error);
       toast.error('Failed to send email');
@@ -122,20 +129,27 @@ export function EnquiryForm() {
                 onChange={handleChange}
               ></textarea>
             </div>
-            <div className="flex justify-center items-center">
-              <button 
-                onClick={handleSubmit} 
-                className="w-64 bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 text-center"
-                disabled={loading} // Disable button when loading
+            <div className="flex justify-center items-center gap-8">
+              <button
+                  onClick={handleSubmit}
+                  className="w-50 bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 text-center"
+                  disabled={loading} // Disable button when loading
               >
                 {loading ? 'Sending...' : 'Send Enquiry'}
+              </button>
+              <button
+                  onClick={openWhatsApp}
+                  className="w-50 bg-green-600 text-white rounded-md px-4 py-2 hover:bg-blue-600 text-center"
+                  disabled={loading} // Disable button when loading
+              >
+                contact on whatsapp
               </button>
             </div>
           </form>
         </div>
       </div>
       <Footer/>
-      <ToastContainer /> {/* Add ToastContainer for displaying notifications */}
+      <ToastContainer/> {/* Add ToastContainer for displaying notifications */}
     </div>
   );
 }

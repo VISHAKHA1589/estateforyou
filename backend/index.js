@@ -102,7 +102,7 @@ app.post('/send-enquiry-email', async (req, res) => {
   try {
     await transporter.sendMail({
       from: 'bidhimalakar@gmail.com',
-      to: 'Estate4Uservices@gmail.com', // Owner's email address
+      to: 'bishakham3@gmail.com', // Owner's email address
       subject: 'New Property Inquiry',
       text: `Hi there,
         A new inquiry has just been made by:

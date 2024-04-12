@@ -20,7 +20,7 @@ Get a Better and Professionals Design
               <div class="service-card">
 
                 <div class="card-icon">
-                  <img src="https://mkjproperties.in/assets/images/1.png" alt="Service icon"/>
+                  <img src="../src/assets/images/service-3.png" className="h-[12rem]" alt="Service icon"/>
                 </div>
 
                 <h3 class="h3 card-title">
@@ -45,7 +45,7 @@ Get a Better and Professionals Design
               <div class="service-card">
 
                 <div class="card-icon">
-                  <img src="https://marqueehomesutah.com/wp-content/uploads/2021/11/Untitled-design-31-1.png" alt="Service icon"/>
+                  <img src="../src/assets/images/service-2.png" className="h-[12rem]" alt="Service icon"/>
                 </div>
 
                 <h3 class="h3 card-title">
@@ -70,7 +70,7 @@ Get a Better and Professionals Design
               <div class="service-card">
 
                 <div class="card-icon">
-                  <img src="https://mkjproperties.in/assets/images/4.png" alt="Service icon"/>
+                  <img src="../src/assets/images/service-1.png" className="h-[12rem]"alt="Service icon"/>
                 </div>
 
                 <h3 class="h3 card-title">
