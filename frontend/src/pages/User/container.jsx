@@ -1,6 +1,14 @@
 import './services.css'
 
 function Container(){
+  function openWhatsApp() {
+
+    let phoneNumber = '1234567890';
+    let message = encodeURIComponent('Hello! I would like to inquire about...');
+    let whatsappLink = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(whatsappLink);
+  }
+
   return(
 
       <section class="cta">
@@ -15,7 +23,7 @@ function Container(){
                 </div>
 
               </header>
-              <button class="btn cta-btn">
+              <button class="btn cta-btn" onClick={openWhatsApp}>
                 <span>CONTACT US</span>
 
                 <ion-icon name="arrow-forward-outline"></ion-icon>
