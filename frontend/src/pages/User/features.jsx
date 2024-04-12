@@ -9,7 +9,12 @@ function Features(){
       <section class="features">
         <div class="container">
 
-          <p class="section-subtitle">Our Aminities</p>
+
+  <h2 class="h2 section-title text-gray-100 font-extrabold text-4xl xs:text-4xl md:text-4xl"><span class="text-black">
+Our aminities
+</span></h2>
+
+
 
           <h2 class="h2 section-title"><strong>Building Aminities</strong></h2>
 
