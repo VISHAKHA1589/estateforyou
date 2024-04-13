@@ -10,13 +10,11 @@ function Features(){
         <div class="container">
 
 
-  <h2 class="h2 section-title text-gray-100 font-extrabold text-4xl xs:text-4xl md:text-4xl"><span class="text-black">
-Our aminities
-</span></h2>
+  
 
 
 
-          <h2 class="h2 section-title"><strong>Building Aminities</strong></h2>
+          <h2 class="h2 section-title underline decoration-sky-500"><strong>Building Aminities</strong></h2>
 
           <ul class="features-list">
 
@@ -120,7 +118,7 @@ Our aminities
               <Link to={'/mason'}  class="features-card">
 
                 <div class="card-icon">
-                  <img src="https://th.bing.com/th/id/OIP.Fo_zBrbMI0XWAhaOXqsg1QHaHa?rs=1&pid=ImgDetMain" alt="iconimg"></img>
+                  <img src="https://e7.pngegg.com/pngimages/566/197/png-clipart-man-holding-combination-wrench-labour-day-international-workers-day-labor-day-may-day-laborer-a-wrench-blue-hand.png" alt="iconimg"></img>
                 </div>
 
                 <h3 class="card-title">Mason consultation</h3>
