@@ -1,8 +1,18 @@
 import React from 'react';
+import Navigation from "../Auth/Navigation.jsx";
+import Footer from "../User/Footer.jsx";
 
 function planning() {
+    function sendWhatsAppMessage() {
+
+        const message = encodeURIComponent("Hi, I am interested in your engineering service services. Can you provide more information?");
+
+        window.open(`https://wa.me/916009396197?text=${message}`, '_blank');
+    }
+
     return (
       <div>
+          <Navigation/>
       <section>
       
 <div class="overflow-hidden bg-white py-24 sm:py-32">
@@ -54,8 +64,8 @@ function planning() {
            Enquire US on....<section>
              
 
-<button class="bg-green-700 mx-20 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full shadow-lg">
-<a href="https://wa.me/916009396197" target="_blank">Join WhatsApp</a>
+<button class="bg-green-700 mx-20 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full shadow-lg" onClick={sendWhatsAppMessage}>
+contact us on whatsapp
 </button>
            </section>
 

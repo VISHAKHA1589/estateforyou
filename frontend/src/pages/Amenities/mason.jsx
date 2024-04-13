@@ -1,113 +1,190 @@
-// Mason.jsx
-
-import React, { useState } from 'react';
-import { useAuth0 } from "@auth0/auth0-react";
-import axios from "axios";
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import Loading from "../../Loading.jsx";
 import Navigation from "../Auth/Navigation.jsx";
-import Footer from './../User/Footer'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import Footer from "../User/Footer.jsx";
 
-const Mason = () => {
-    const { user, isAuthenticated, loginWithRedirect } = useAuth0();
-    const navigate = useNavigate();
-    const [loading, setLoading] = useState(false);
-    const [formData, setFormData] = useState({
-        name: '',
-        email: isAuthenticated && user.email || '',
-        phoneNumber: '',
-        message: '',
-        category: ''
-    });
+function mason() {
+    function sendWhatsAppMessage() {
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    };
+        const message = encodeURIComponent("Hi, I am interested in your engineering service services. Can you provide more information?");
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-        try {
-            await axios.post('http://localhost:5000/send-enquiry-email', formData);
-            toast.success("Enquiry sent successfully");
-            navigate('/');
-        } catch (error) {
-            console.error(error);
-            toast.error('Failed to send email');
-        } finally {
-            setLoading(false);
-        }
-    };
+        window.open(`https://wa.me/916009396197?text=${message}`, '_blank');
+    }
 
-    const openWhatsApp = () => {
-        let phoneNumber = '916009396197';
-        let message = encodeURIComponent('Hello! I would like to inquire about...');
-        let whatsappLink = `https://wa.me/${phoneNumber}?text=${message}`;
-        window.open(whatsappLink);
-    };
 
     return (
-        <div className="flex flex-col min-h-screen ">
-            <Navigation />
-            <div className="flex-grow flex justify-center items-center">
-                <div className="w-full max-w-4xl px-6 py-12 bg-white shadow-lg rounded-lg">
-                    <div className="flex justify-center mb-8">
-                        <img src="https://via.placeholder.com/800x400" alt="Image" className="w-full rounded-lg shadow-lg" />
+
+        <div>
+            <Navigation/>
+            <section>
+
+                <div class="overflow-hidden bg-white py-24 sm:py-32">
+                    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                        <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+                            <div class="lg:pr-8 lg:pt-4">
+                                <div class="lg:max-w-lg">
+                                    <h2 class="text-base font-semibold leading-7 text-green-600">Join Us</h2>
+                                    <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">Empowering workers, building stronger communities</p>
+                                    <p class="mt-6 text-lg leading-8 text-gray-600">"Workers of the world unite; you have nothing to lose but your chains." - Karl Marx
+
+                                        This quote encapsulates the essence of labor solidarity and the ongoing struggle for workers' rights and empowerment. It could serve as an inspiring and thought-provoking addition to a labor website, reminding visitors of the importance of unity and collective action in the pursuit of justice and equality in the workplace.</p>
+                                    <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+                                        <div class="relative pl-9">
+                                            <dt class="inline font-semibold text-gray-900 underline decoration-sky-500">
+                                                <svg class="absolute left-1 top-1 h-5 w-5 text-red-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd" d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z" clip-rule="evenodd" />
+                                                </svg>
+                                                Better labours:
+                                            </dt>
+                                            <dd class="inline">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.</dd>
+                                        </div>
+                                        <div class="relative pl-9">
+                                            <dt class="inline font-semibold text-gray-900 underline decoration-sky-500">
+                                                <svg class="absolute left-1 top-1 h-5 w-5 text-yellow-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z" clip-rule="evenodd" />
+                                                </svg>
+                                                Better materials:
+                                            </dt>
+                                            <dd class="inline">Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo.</dd>
+                                        </div>
+                                        <div class="relative pl-9">
+                                            <dt class="inline font-semibold text-gray-900 underline decoration-sky-500">
+                                                <svg class="absolute left-1 top-1 h-5 w-5 text-orange-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path d="M4.632 3.533A2 2 0 016.577 2h6.846a2 2 0 011.945 1.533l1.976 8.234A3.489 3.489 0 0016 11.5H4c-.476 0-.93.095-1.344.267l1.976-8.234z" />
+                                                    <path fill-rule="evenodd" d="M4 13a2 2 0 100 4h12a2 2 0 100-4H4zm11.24 2a.75.75 0 01.75-.75H16a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75h-.01a.75.75 0 01-.75-.75V15zm-2.25-.75a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75H13a.75.75 0 00.75-.75V15a.75.75 0 00-.75-.75h-.01z" clip-rule="evenodd" />
+                                                </svg>
+                                                Better opportunities:
+                                            </dt>
+                                            <dd class="inline">Ac tincidunt sapien vehicula erat auctor pellentesque rhoncus. Et magna sit morbi lobortis.</dd>
+                                        </div>
+                                        <div class="relative pl-9">
+                                            <dt class="inline font-semibold text-gray-900">
+                                                <svg class="absolute left-1 top-1 h-5 w-5 text-orange-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <path d="M4.632 3.533A2 2 0 016.577 2h6.846a2 2 0 011.945 1.533l1.976 8.234A3.489 3.489 0 0016 11.5H4c-.476 0-.93.095-1.344.267l1.976-8.234z" />
+                                                    <path fill-rule="evenodd" d="M4 13a2 2 0 100 4h12a2 2 0 100-4H4zm11.24 2a.75.75 0 01.75-.75H16a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75h-.01a.75.75 0 01-.75-.75V15zm-2.25-.75a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75H13a.75.75 0 00.75-.75V15a.75.75 0 00-.75-.75h-.01z" clip-rule="evenodd" />
+                                                </svg>
+                                                Enquire US on....<button class="bg-green-700 mx-20 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full shadow-lg" onClick={sendWhatsAppMessage}>
+                                                contact us on whatsapp
+                                            </button>
+
+
+
+
+
+                                            </dt>
+
+                                        </div>
+                                    </dl>
+                                </div>
+                            </div>
+                            <img class="h-56 lg:h-60 w-full object-cover" src="https://th.bing.com/th/id/OIP.J-eUL7-B0alMQlFibKFOOwHaEc?rs=1&pid=ImgDetMain" alt="" />
+                        </div>
                     </div>
-                    <h1 className="text-3xl md:text-4xl font-bold text-center mb-6">Welcome to our Inquiry Page!</h1>
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                        <div>
-                            <label htmlFor="name" className="block mb-1">Your Name</label>
-                            <input
-                                type="text"
-                                id="name"
-                                className="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500"
-                                placeholder="John Doe"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="phoneNumber" className="block mb-1">Phone Number</label>
-                            <input
-                                type="tel"
-                                id="phoneNumber"
-                                className="w-full border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-blue-500"
-                                placeholder="+1234567890"
-                                name="phoneNumber"
-                                value={formData.phoneNumber}
-                                onChange={handleChange}
-                            />
-                        </div>
-                        <div>
-                            <label htmlFor="message" className="block mb-1">Message</label>
-                            <textarea
-                                id="message"
-                                className="w-full border-gray-300 rounded-md px-4 py-2 h-32 focus:outline-none focus:border-blue-500"
-                                placeholder="Write your message here"
-                                name="message"
-                                value={formData.message}
-                                onChange={handleChange}
-                            ></textarea>
-                        </div>
-                        <div className="flex justify-center">
-                            <button
-                                type="submit"
-                                className="bg-blue-500 text-white rounded-md px-6 py-3 text-lg hover:bg-blue-600 focus:outline-none"
-                                disabled={loading}
-                            >
-                                {loading ? 'Sending...' : 'Send Inquiry'}
-                            </button>
-                        </div>
-                    </form>
                 </div>
-            </div>
-            <Footer />
-            <ToastContainer />
+
+
+            </section>
+
+
+            <section class="h-screen w-screen bg-gray-50 p-8">
+                <h1 class="text-center font-bold text-5xl text-black"><strong>our offers</strong> </h1>
+
+                <div class="grid justify-center md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-7 my-10">
+
+                    <div class="bg-white rounded-lg border shadow-md max-w-xs md:max-w-none overflow-hidden">
+                        <img class="h-56 lg:h-60 w-full object-cover" src="https://th.bing.com/th/id/OIP.gcPmHoHUpHi8EacU5edx5AHaEf?w=720&h=436&rs=1&pid=ImgDetMain" alt="" />
+                        <div class="p-3">
+                            <span class="text-sm text-primary"></span>
+                            <h3 class="font-semibold text-xl leading-6 text-gray-700 my-2">
+                                Advocating for fair wages, safe workplaces, and dignified labor.
+                            </h3>
+                            <p class="paragraph-normal text-gray-600">
+
+                            </p>
+                            <a class="mt-3 block" href="#">Read More </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg border shadow-md max-w-xs md:max-w-none overflow-hidden">
+                        <img class="h-56 lg:h-60 w-full object-cover" src="https://industrial.cnctech.vn/wp-content/uploads/2022/08/asian-chinese-engineer-worker-wearing-safety-suit-helmet-eyes-protection-glasses-focus-work-inspection-checking-production-process-factory-1280x853.jpg" alt="" />
+                        <div class="p-3">
+                            <span class="text-sm text-primary"></span>
+                            <h3 class="font-semibold text-xl leading-6 text-gray-700 my-2">
+                                Standing up for the rights of workers, today and tomorrow
+                            </h3>
+                            <p class="paragraph-normal text-gray-600">
+
+                            </p>
+                            <a class="mt-3 block" href="#">Read More </a>
+                        </div>
+                    </div>
+
+
+                    <div class="bg-white rounded-lg border shadow-md max-w-xs md:max-w-none overflow-hidden">
+                        <img class="h-56 lg:h-60 w-full object-cover" src="https://th.bing.com/th/id/OIP.fF-IEBDxd1N3oc5kCxMhzgHaE8?w=640&h=427&rs=1&pid=ImgDetMain" alt="" />
+                        <div class="p-3">
+                            <span class="text-sm text-primary"></span>
+                            <h3 class="font-semibold text-xl leading-6 text-gray-700 my-2">
+                                Uniting labor for a brighter, more equitable future
+                            </h3>
+                            <p class="paragraph-normal text-gray-600">
+
+                            </p>
+                            <a class="mt-3 block" href="#">Read More </a>
+                        </div>
+                    </div>
+
+
+                    <div class="bg-white rounded-lg border shadow-md max-w-xs md:max-w-none overflow-hidden">
+                        <img class="h-56 lg:h-60 w-full object-cover" src="https://th.bing.com/th/id/OIP.qcfrPMX9F-c4AuBeQ8FyWgHaE8?w=2000&h=1334&rs=1&pid=ImgDetMain" alt="" />
+                        <div class="p-3">
+                            <span class="text-sm text-primary"></span>
+                            <h3 class="font-semibold text-xl leading-6 text-gray-700 my-2">
+                                From the shop floor to the boardroom, championing workers' voices
+                            </h3>
+                            <p class="paragraph-normal text-gray-600">
+
+                            </p>
+                            <a class="mt-3 block" href="#">Read More </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg border shadow-md max-w-xs md:max-w-none overflow-hidden">
+                        <img class="h-56 lg:h-60 w-full object-cover" src="https://th.bing.com/th/id/R.75f2112c295c98ebba23d9f4f7f15004?rik=aI1NHVWe35KzXw&riu=http%3a%2f%2fwww.logipro2000.com%2fimages%2fslide1.jpg&ehk=0IM2oSHLUbvbzZyTWhdEes2GYfrpUvnu9v8uDaf6Np0%3d&risl=&pid=ImgRaw&r=0" alt="" />
+                        <div class="p-3">
+                            <span class="text-sm text-primary"></span>
+                            <h3 class="font-semibold text-xl leading-6 text-gray-700 my-2">
+                                Ensuring every worker is treated with respect and dignity.
+                            </h3>
+                            <p class="paragraph-normal text-gray-600">
+
+                            </p>
+                            <a class="mt-3 block" href="#">Read More </a>
+                        </div>
+                    </div>
+
+
+                    <div class="bg-white rounded-lg border shadow-md max-w-xs md:max-w-none overflow-hidden">
+                        <img class="h-56 lg:h-60 w-full object-cover" src="https://tuvaustria.sa/wp-content/uploads/2021/03/3432.jpg" alt="" />
+                        <div class="p-3">
+                            <span class="text-sm text-primary"></span>
+                            <h3 class="font-semibold text-xl leading-6 text-gray-700 my-2">
+                                Building solidarity among workers for a more just society.
+                            </h3>
+                            <p class="paragraph-normal text-gray-600">
+
+                            </p>
+                            <a class="mt-3 block" href="#">Read More </a>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+
+
         </div>
     );
 }
 
-export default Mason;
+export default mason;
