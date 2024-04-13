@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useGetPropertyDetailsQuery } from '../../redux/api/propertyApiSlics';
 import { useSelector } from "react-redux";
 import axios from "axios";
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import Navigation from './Navigation';
 import { useFetchCategoriesQuery } from '../../redux/api/categoryApiSlice';
 import Footer from './../User/Footer'
@@ -14,15 +14,15 @@ export function EnquiryForm() {
 
   const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const navigate = useNavigate(); // Initialize useNavigate
-  const [loading, setLoading] = useState(true); // Introduce loading state
+  const [loading, setLoading] = useState(true);
     function openWhatsApp() {
 
-      let phoneNumber = '6009396197';
+      let phoneNumber = '916009396197';
       let message = encodeURIComponent('Hello! I would like to inquire about...');
       let whatsappLink = `https://wa.me/${phoneNumber}?text=${message}`;
       window.open(whatsappLink);}
 
-  
+
   useEffect(() => {
     if (!isAuthenticated) {
       loginWithRedirect();
@@ -31,12 +31,12 @@ export function EnquiryForm() {
         setLoading(false);
         navigate('/enquiry');
       }, 1000);
-  
+
       return () => clearTimeout(timer);
     }
   }, [isAuthenticated, loginWithRedirect, navigate]);
-  
-  
+
+
   const { userInfo } = useSelector((state) => state.auth);
   const [formData, setFormData] = useState({
     name: '',
@@ -60,7 +60,7 @@ export function EnquiryForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true); // Set loading to true during form submission
+    setLoading(true);
     try {
       await axios.post('http://localhost:5000/send-enquiry-email', formData);
       toast.success("enquiry sent successfully")
@@ -69,12 +69,12 @@ export function EnquiryForm() {
       console.error(error);
       toast.error('Failed to send email');
     } finally {
-      setLoading(false); // Reset loading state after form submission
+      setLoading(false);
     }
-  };  
+  };
 
   return (
-    <div className="flex flex-col h-screen w-screen"> 
+    <div className="flex flex-col h-screen w-screen">
       <Navigation />
       <div className="flex-grow flex justify-center items-center">
         <div className="w-full max-w-md p-8 bg-white shadow-2xl rounded-xl">
@@ -92,7 +92,7 @@ export function EnquiryForm() {
                 onChange={handleChange}
               />
             </div>
-            
+
             <div>
               <label htmlFor="phoneNumber" className="block mb-1">Phone Number</label>
               <input
@@ -110,8 +110,8 @@ export function EnquiryForm() {
               <select
                 placeholder='Select category'
                 className='p-4 w-full border rounded-lg bg-white text-black'
-                onChange={handleCategoryChange} // Update selected category on change
-                value={selectedCategory} // Set selected category
+                onChange={handleCategoryChange}
+                value={selectedCategory}
               >
                 {categories && categories.map((c) => (
                   <option key={c._id} value={c.name}>{c.name}</option>
@@ -133,14 +133,14 @@ export function EnquiryForm() {
               <button
                   onClick={handleSubmit}
                   className="w-50 bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-600 text-center"
-                  disabled={loading} // Disable button when loading
+                  disabled={loading}
               >
                 {loading ? 'Sending...' : 'Send Enquiry'}
               </button>
               <button
                   onClick={openWhatsApp}
                   className="w-50 bg-green-600 text-white rounded-md px-4 py-2 hover:bg-blue-600 text-center"
-                  disabled={loading} // Disable button when loading
+                  disabled={loading}
               >
                 contact on whatsapp
               </button>
@@ -149,7 +149,7 @@ export function EnquiryForm() {
         </div>
       </div>
       <Footer/>
-      <ToastContainer/> {/* Add ToastContainer for displaying notifications */}
+      <ToastContainer/>
     </div>
   );
 }

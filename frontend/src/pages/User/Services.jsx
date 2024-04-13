@@ -10,7 +10,7 @@ function Services(){
 Right Place To
 </span>
             <span class="text-black">
-Get a Better and Professionals Design
+Start Your House Hunting Journey
 </span></h2>
 
 
@@ -28,8 +28,7 @@ Get a Better and Professionals Design
                 </h3>
 
                 <p class="card-text">
-                  over 1 million+ homes for sale available on the website, we can match you with a house you will want
-                  to call home.
+                  Find Your Dream Home: Explore Our Wide Selection of Properties
                 </p>
 
                 <Link to={'/forSale'} class="card-link">
@@ -53,8 +52,7 @@ Get a Better and Professionals Design
                 </h3>
 
                 <p class="card-text">
-                  over 1 million+ homes for sale available on the website, we can match you with a house you will want
-                  to call home.
+                  Find the Perfect Rental Property: Tailored to Your Budget and Preferences
                 </p>
 
                 <Link to={'/forRent'} class="card-link">
@@ -78,8 +76,7 @@ Get a Better and Professionals Design
                 </h3>
 
                 <p class="card-text">
-                  over 1 million+ homes for sale available on the website, we can match you with a house you will want
-                  to call home.
+                  Sell Your Home Stress-Free: From Listing to Closing, We've Got You Covered
                 </p>
 
                 <Link to={'/propertylist'} class="card-link">

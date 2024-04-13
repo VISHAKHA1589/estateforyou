@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { mailOutline, locationOutline, closeOutline, searchOutline, personOutline, cartOutline, menuOutline, logoFacebook, logoPinterest, logoInstagram, logoTwitter, bedOutline, homeOutline } from 'ionicons/icons';
+import { mailOutline, locationOutline, closeOutline, searchOutline, personOutline, cartOutline, menuOutline, logoFacebook, logoPinterest, logoInstagram, logoTwitter, bedOutline, homeOutline, businessOutline } from 'ionicons/icons';
 import { useAuth0 } from "@auth0/auth0-react";
 import {useLogoutMutation} from "../../redux/api/UsersApiSlice.js";
 import {useDispatch} from "react-redux";
@@ -90,6 +90,12 @@ function Navigation() {
             console.error(error);
         }
     };
+  function openWhatsApp() {
+
+    let phoneNumber = '916009396197';
+    let message = encodeURIComponent('Hello! I would like to inquire about...');
+    let whatsappLink = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(whatsappLink);}
 
 
     return (
@@ -170,13 +176,13 @@ function Navigation() {
                   <a href="#service" className="navbar-link" data-nav-link>Service</a>
                 </li>
                 <li>
-                  <a href="#property" className="navbar-link" data-nav-link>Property</a>
+                  <Link to="/forSale" className="navbar-link" data-nav-link>Property</Link>
                 </li>
                 <li>
                   <a href="#blog" className="navbar-link" data-nav-link>Blog</a>
                 </li>
                 <li>
-                  <a href="#contact" className="navbar-link" data-nav-link>Contact</a>
+                  <button onClick={openWhatsApp} className="navbar-link" data-nav-link>Contact</button>
                 </li>
               </ul>
             </div>
@@ -268,7 +274,7 @@ function Navigation() {
 
             <button className="header-bottom-actions-btn" aria-label="Rent">
               <Link to="/forRent" replace>
-                <ion-icon icon={bedOutline}></ion-icon>
+              <ion-icon icon={businessOutline}></ion-icon>
                 <span>Rent</span>
               </Link>
             </button>

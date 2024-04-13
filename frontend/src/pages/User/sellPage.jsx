@@ -59,7 +59,7 @@ export const sellPage = () => {
     <div className="bg-white">
       <Navigation />
       <div className="flex justify-center">
-        <h2 className="text-3xl tracking-tight text-gray-500 font-semibold">PROPERTIES FOR Sale</h2>
+        <h2 className="text-3xl tracking-tight text-gray-500 font-semibold">PROPERTIES FOR SALE</h2>
       </div>
 
       <div className="mx-auto px-4 sm:px-6 lg:px-8">

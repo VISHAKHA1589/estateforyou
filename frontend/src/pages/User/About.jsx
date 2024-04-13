@@ -18,14 +18,13 @@ function About() {
               <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
             </svg>
           </span>
-            <span class="rounded-full bg-indigo-500/10 px-3 py-1 text-sm font-semibold leading-6 text-cyan-500 ring-1 ring-inset ring-indigo-500/20">What's new</span>
-            <h2 class="h2 section-title "><strong>The Leading Real Estate Rental Marketplace.</strong></h2>
+
+            <h2 class="h2 section-title "><strong>The Leading Real Estate Rental Marketplace In Agartala.</strong></h2>
 
 
             <p class="about-text">
-              Over 39,000 people work for us in more than 70 countries all over the This breadth of global coverage,
-              combined with
-              specialist services
+              Over 100+ builders and brokers for us in Agartala,
+              combined with specialist services
             </p>
 
             <ul class="about-list">
@@ -35,7 +34,7 @@ function About() {
                   <IonIcon icon={homeOutline}></IonIcon>
                 </div>
 
-                <p class="about-item-text">Smart Home Design</p>
+                <p class="about-item-text">Modern Home Design</p>
               </li>
 
               <li class="about-item">
@@ -65,8 +64,7 @@ function About() {
             </ul>
 
             <p class="callout">
-              "Enimad minim veniam quis nostrud exercitation
-              llamco laboris. Lorem ipsum dolor sit amet"
+              Unlock Your Dream Home Today
             </p>
 
             <a href="#service" class="btn">Our Services</a>

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCreatePropertyMutation } from '../../../src/redux/api/propertyApiSlics.js';
 import { toast } from 'react-toastify';
@@ -8,17 +8,24 @@ import Navigation from './Navigation.jsx';
 import Footer from "../User/Footer.jsx";
 import { useAuth0 } from "@auth0/auth0-react";
 
+// Loading component
+const Loading = () => (
+    <div className="flex justify-center items-center h-screen bg-blue-100">
+      <div className="loader ease-linear rounded-full border-8 border-t-8 border-gray-200 h-32 w-32"></div>
+    </div>
+);
+
 const PropertyList = () => {
-
   const { userInfo } = useSelector(state => state.auth);
-
-  const { user, isAuthenticated, loginWithRedirect } = useAuth0(); // Use useAuth0 hook here
+  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
+  const [redirectToLogin, setRedirectToLogin] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // State to track loading
 
   useEffect(() => {
     if (!isAuthenticated) {
-      loginWithRedirect();
+      setRedirectToLogin(true);
     }
-  }, [isAuthenticated, loginWithRedirect]);
+  }, [isAuthenticated]);
 
   const [images, setImages] = useState(['', '', '', '']);
   const [name, setName] = useState('');
@@ -32,8 +39,13 @@ const PropertyList = () => {
 
   const { data: categories } = useFetchCategoriesQuery();
 
-
   const [createProperty] = useCreatePropertyMutation();
+
+  useEffect(() => {
+    if (categories) {
+      setIsLoading(false); // Set loading to false when categories are loaded
+    }
+  }, [categories]);
 
   const handleImage = (index, e) => {
     const file = e.target.files[0];
@@ -70,6 +82,25 @@ const PropertyList = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Validate form fields
+    if (!name || !description || !price || !category || !address || !phoneNumber || images.some(image => !image) || images.length !== 4) {
+      toast.error("Please fill in all fields and upload exactly four images.");
+      return;
+    }
+
+    // Validate price
+    if (isNaN(price)) {
+      toast.error("Price must be a number.");
+      return;
+    }
+
+    // Validate phone number
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(phoneNumber)) {
+      toast.error("Please enter a valid phone number (10 digits).");
+      return;
+    }
+
     try {
       const propertyData = new FormData();
       propertyData.append("owner", user.email);
@@ -84,7 +115,6 @@ const PropertyList = () => {
       propertyData.append("address", address);
       propertyData.append("phoneNumber", phoneNumber);
 
-
       const { data } = await createProperty(propertyData);
       if (data && data.error) {
         toast.error(data.error);
@@ -97,6 +127,12 @@ const PropertyList = () => {
       toast.error("Property create failed. Try Again.");
     }
   };
+
+
+  // Render loading component if still loading
+  if (isLoading) {
+    return <Loading />;
+  }
   
   return (
     <div>

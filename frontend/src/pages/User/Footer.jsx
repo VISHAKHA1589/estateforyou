@@ -1,202 +1,76 @@
-function Footer()
-{
-  return(
+import React from 'react';
+import { useAuth0 } from '@auth0/auth0-react';
+
+function Footer() {
+  const { loginWithRedirect } = useAuth0();
+  function openWhatsApp() {
+    let phoneNumber = '916009396197'; // Enter your WhatsApp phone number here
+    let message = encodeURIComponent('Hello! I would like to inquire about...');
+    let whatsappLink = `https://wa.me/${phoneNumber}?text=${message}`;
+    window.open(whatsappLink);
+  }
+
+
+  return (
       <div>
-        <footer class="footer">
-
-          <div class="footer-top">
-            <div class="container">
-
-              <div class="footer-brand">
-
-
-          <a href="#" class="logo bg-white">
-            <img src="../src/assets/images/logo.png" alt="Homeverse logo"/>
-          </a>
-
-
-                <p class="section-text">
-                  Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is dummy text of the printing.
-                </p>
-
-                <ul class="contact-list">
-
+        <footer className="footer">
+          <div className="footer-top">
+            <div className="container">
+              <div className="footer-brand">
+                <a href="#" className="logo bg-white">
+                  <img src="../src/assets/images/logo.png" alt="Estate4U logo" />
+                </a>
+                <p className="section-text">Estate4U aims to simplify the real estate experience for both buyers and sellers.</p>
+                <ul className="contact-list">
                   <li>
-                    <a href="#" class="contact-link">
+                    <a href="#" className="contact-link">
                       <ion-icon name="location-outline"></ion-icon>
-
-                      <address>Brooklyn, New York, United States</address>
+                      <address>Agartala, Tripura, India</address>
                     </a>
                   </li>
-
                   <li>
-                    <a href="tel:+0123456789" class="contact-link">
-                      <ion-icon name="call-outline"></ion-icon>
-
-                      <span>+0123-456789</span>
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="mailto:contact@homeverse.com" class="contact-link">
+                    <a href="mailto:Estate4Usupport@gmail.com" className="contact-link">
                       <ion-icon name="mail-outline"></ion-icon>
-
-                      <span>contact@homeverse.com</span>
+                      <span>Estate4Usupport@gmail.com</span>
                     </a>
                   </li>
-
                 </ul>
-
-                <ul class="social-list">
-
-                  <li>
-                    <a href="#" class="social-link">
-                      <ion-icon name="logo-facebook"></ion-icon>
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="#" class="social-link">
-                      <ion-icon name="logo-twitter"></ion-icon>
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="#" class="social-link">
-                      <ion-icon name="logo-linkedin"></ion-icon>
-                    </a>
-                  </li>
-
-                  <li>
-                    <a href="#" class="social-link">
-                      <ion-icon name="logo-youtube"></ion-icon>
-                    </a>
-                  </li>
-
+                <ul className="social-list">
+                  <li><a href="#" className="social-link"><ion-icon name="logo-facebook"></ion-icon></a></li>
+                  <li><a href="#" className="social-link"><ion-icon name="logo-twitter"></ion-icon></a></li>
+                  <li><a href="#" className="social-link"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+                  <li><a href="#" className="social-link"><ion-icon name="logo-youtube"></ion-icon></a></li>
                 </ul>
-
               </div>
-
-              <div class="footer-link-box">
-
-                <ul class="footer-list">
-
-                  <li>
-                    <p class="footer-list-title">Company</p>
-                  </li>
-
-                  <li>
-                    <a href="#" class="footer-link">About</a>
-                  </li>
-
-                  <li>
-                    <a href="#" class="footer-link">Blog</a>
-                  </li>
-
-                  <li>
-                    <a href="#" class="footer-link">All Products</a>
-                  </li>
-
-                  <li>
-                    <a href="#" class="footer-link">Locations Map</a>
-                  </li>
-
-                  <li>
-                    <a href="#" class="footer-link">FAQ</a>
-                  </li>
-
-                  <li>
-                    <a href="#" class="footer-link">Contact us</a>
-                  </li>
-
+              <div className="footer-link-box">
+                <ul className="footer-list">
+                  <li><p className="footer-list-title">Company</p></li>
+                  <li><a href="#" className="footer-link">About</a></li>
+                  <li><a href="#" className="footer-link">Blog</a></li>
+                  <li><button onClick={openWhatsApp} className="footer-link">Contact us</button></li>
                 </ul>
-
-                <ul class="footer-list">
-
-                  <li>
-                    <p class="footer-list-title">Services</p>
-                  </li>
-
-                  <li>
-                    <a href="#" class="footer-link">Order tracking</a>
-                  </li>
-
-                  <li>
-                    <a href="#" class="footer-link">Wish List</a>
-                  </li>
-
-                  <li>
-                    <a href="#" class="footer-link">Login</a>
-                  </li>
-
-                  <li>
-                    <a href="#" class="footer-link">My account</a>
-                  </li>
-
-                  <li>
-                    <a href="#" class="footer-link">Terms & Conditions</a>
-                  </li>
-
-                  <li>
-                    <a href="#" class="footer-link">Promotional Offers</a>
-                  </li>
-
+                <ul className="footer-list">
+                  <li><p className="footer-list-title">Services</p></li>
+                  <li><button className="footer-link" onClick={() => loginWithRedirect()}>Login</button></li>
+                  <li><a href="#" className="footer-link">Register</a></li>
                 </ul>
-
-                <ul class="footer-list">
-
-                  <li>
-                    <p class="footer-list-title">Customer Care</p>
-                  </li>
-
-                  <li>
-                    <a href="#" class="footer-link">Login</a>
-                  </li>
-
-                  <li>
-                    <a href="#" class="footer-link">My account</a>
-                  </li>
-
-                  <li>
-                    <a href="#" class="footer-link">Wish List</a>
-                  </li>
-
-                  <li>
-                    <a href="#" class="footer-link">Order tracking</a>
-                  </li>
-
-                  <li>
-                    <a href="#" class="footer-link">FAQ</a>
-                  </li>
-
-                  <li>
-                    <a href="#" class="footer-link">Contact us</a>
-                  </li>
-
+                <ul className="footer-list">
+                  <li><p className="footer-list-title">Customer Care</p></li>
+                  <li><button className="footer-link" onClick={() => loginWithRedirect()}>Login</button></li>
+                  <li><a href="#" className="footer-link">FAQ</a></li>
+                  <li><button onClick={openWhatsApp} className="footer-link">Contact us</button></li>
                 </ul>
-
               </div>
-
             </div>
           </div>
-
-          <div class="footer-bottom">
-            <div class="container">
-
-              <p class="copyright">
-                &copy; 2024 <a href="#">Estate4u</a>. All Rights Reserved
-              </p>
-
+          <div className="footer-bottom">
+            <div className="container">
+              <p className="copyright">&copy; 2024 <a href="#">Estate4u</a>. All Rights Reserved</p>
             </div>
           </div>
-
         </footer>
-
-
       </div>
-
-
-  )}
-
+  );
+}
 
 export default Footer;

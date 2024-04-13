@@ -3,9 +3,7 @@ import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
- // Import Passport
 import session from "express-session";
-
 import User from "./models/userModel.js";
 import connectDB from "./config/db.js"
 
@@ -19,7 +17,7 @@ import bodyParser from "body-parser"
 dotenv.config();
 const port = process.env.PORT || 5000;
 
-// Connect to MongoDB
+
 connectDB();
 
 const app = express();
@@ -45,31 +43,31 @@ app.use('/uploads', express.static(path.join(__dirname, "/uploads")));
 
 app.use(bodyParser.json());
 
-// API endpoint to handle form submissions
-import nodemailer from 'nodemailer'; // Import nodemailer module
 
-// API endpoint to handle form submissions
+import nodemailer from 'nodemailer'; 
+
+
 app.post('/send-email', async (req, res) => {
-  const { name, email, phoneNumber, propertyOwner, propertyPhoneNumber, propertyName } = req.body; // Extract name, email, and phoneNumber from req.body
+  const { name, email, phoneNumber, propertyOwner, propertyPhoneNumber, propertyName } = req.body; 
 
-  // Create a Nodemailer transporter
+
   let transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-      user: 'bidhimalakar@gmail.com', // Your email address
-      pass: 'mwnv yyoe pklz mzwz' // Your email password
+      user: 'bidhimalakar@gmail.com', 
+      pass: 'mwnv yyoe pklz mzwz'
     },
     tls: {
-      // Do not fail on invalid certificates
+   
       rejectUnauthorized: false
     }
   });
 
-  // Send email
+
   try {
     await transporter.sendMail({
       from: 'bidhimalakar@gmail.com',
-      to: 'Estate4Uservices@gmail.com', // Owner's email address
+      to: 'Estate4Uservices@gmail.com',
       subject: 'property details enquiry',
       text: `Hi there, ${name}\nEmail: ${email}\nPhone Number: ${phoneNumber} has just requested details about the property\nProperty Name: ${propertyName}\nProperty Owner: ${propertyOwner}\nOwner Contact Number: ${propertyPhoneNumber}`
     });
@@ -82,27 +80,27 @@ app.post('/send-email', async (req, res) => {
 
 
 app.post('/send-enquiry-email', async (req, res) => {
-  const { name, email, phoneNumber, message, category } = req.body; // Extract name, email, and phoneNumber from req.body
+  const { name, email, phoneNumber, message, category } = req.body;
 
-  // Create a Nodemailer transporter
+  
   let transporter = nodemailer.createTransport({
     service: 'Gmail',
     auth: {
-      user: 'bidhimalakar@gmail.com', // Your email address
-      pass: 'mwnv yyoe pklz mzwz' // Your email password
+      user: 'bidhimalakar@gmail.com', 
+      pass: 'mwnv yyoe pklz mzwz' 
     },
     tls: {
-      // Do not fail on invalid certificates
+
       rejectUnauthorized: false
     }
   
   });
 
-  // Send email
+
   try {
     await transporter.sendMail({
       from: 'bidhimalakar@gmail.com',
-      to: 'Estate4Uservices@gmail.com', // Owner's email address
+      to: 'Estate4Uservices@gmail.com', 
       subject: 'New Property Inquiry',
       text: `Hi there,
         A new inquiry has just been made by:
@@ -125,5 +123,4 @@ app.post('/send-enquiry-email', async (req, res) => {
 
 
 
-// Start the server
 app.listen(port, () => console.log(`Server running on port: ${port}`));
