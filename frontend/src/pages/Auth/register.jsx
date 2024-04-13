@@ -30,16 +30,7 @@ function Register() {
     }
   }, [navigate, redirect, userInfo]);
 
-  useEffect(() => {
-    function start() {
-      gapi.client.init({
-        clientId: "429348943020-qe603e1vi6ob27tr1vcl51qrrsldhgq7.apps.googleusercontent.com",
-        scope: 'email',
-      });
-    }
 
-    gapi.load('client:auth2', start);
-  }, []);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -58,25 +49,7 @@ function Register() {
     }
   };
 
-  const googleLoginSuccessHandler = (response) => {
-    // Handle successful Google login
-    console.log("Google login success:", response);
-
-    // Extract user's name and email from the Google response
-    const { name, email } = response.profileObj;
-
-    // Dispatch action to store credentials or perform any necessary steps
-    dispatch(setCredentials({ name, email }));
-
-    // Redirect to the home page
-    navigate('/');
-  };
-
-  const googleLoginFailureHandler = (error) => {
-    // Handle failed Google login
-    console.error("Google login failure:", error);
-    setError("Failed to login with Google. Please try again.");
-  };
+ 
 
   return (
     <div>
@@ -130,17 +103,6 @@ function Register() {
             <hr className="w-1/3 border-gray-300" />
             <p className="mx-3 text-gray-500">OR</p>
             <hr className="w-1/3 border-gray-300" />
-          </div>
-          <div className="mt-4">
-            <GoogleLogin
-              clientId="429348943020-qe603e1vi6ob27tr1vcl51qrrsldhgq7.apps.googleusercontent.com"
-              buttonText="Sign up with Google"
-              onSuccess={googleLoginSuccessHandler}
-              onFailure={googleLoginFailureHandler}
-              cookiePolicy={'single_host_origin'}
-              isSignedIn={false}
-              className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-red-600 rounded-md hover:bg-red-500 focus:outline-none focus:bg-red-500"
-            />
           </div>
         </div>
       </div>
