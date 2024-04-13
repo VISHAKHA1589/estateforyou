@@ -6,7 +6,7 @@ function Services(){
 
           <p class="section-subtitle">Our Services</p>
 
-          <h2 class="h2 section-title text-gray-100 font-extrabold text-4xl xs:text-4xl md:text-4xl"><span class="text-black">
+          <h2 class="h2 section-title text-gray-100 font-extrabold text-4xl xs:text-4xl md:text-4xl underline decoration-sky-500"><span class="text-black">
 Right Place To
 </span>
             <span class="text-black">

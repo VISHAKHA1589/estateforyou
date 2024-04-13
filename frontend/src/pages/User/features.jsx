@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import {arrowForwardOutline} from 'ionicons/icons';
-
 
 
 function Features(){
@@ -12,11 +10,13 @@ function Features(){
         <div class="container">
 
 
+  <h2 class="h2 section-title text-gray-100 font-extrabold text-4xl xs:text-4xl md:text-4xl"><span class="text-black">
+Our aminities
+</span></h2>
 
 
 
-
-          <h2 class="h2 section-title"><strong>Our Aminities</strong></h2>
+          <h2 class="h2 section-title"><strong>Building Aminities</strong></h2>
 
           <ul class="features-list">
 
@@ -30,7 +30,7 @@ function Features(){
                 <h3 class="card-title">Interior</h3>
 
                 <div class="card-btn">
-                  <ion-icon icon={arrowForwardOutline}></ion-icon>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
                 </div>
 
               </Link>
@@ -46,7 +46,7 @@ function Features(){
                 <h3 class="card-title">Building planning</h3>
 
                 <div class="card-btn">
-                  <ion-icon icon={arrowForwardOutline}></ion-icon>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
                 </div>
 
               </Link>
@@ -62,7 +62,7 @@ function Features(){
                 <h3 class="card-title">Constrction materials</h3>
 
                 <div class="card-btn">
-                  <ion-icon icon={arrowForwardOutline}></ion-icon>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
                 </div>
 
               </Link>
@@ -78,7 +78,7 @@ function Features(){
                 <h3 class="card-title">Home sanitary</h3>
 
                 <div class="card-btn">
-                  <ion-icon icon={arrowForwardOutline}></ion-icon>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
                 </div>
 
               </Link>
@@ -94,7 +94,7 @@ function Features(){
                 <h3 class="card-title">Electricals</h3>
 
                 <div class="card-btn">
-                  <ion-icon icon={arrowForwardOutline}></ion-icon>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
                 </div>
 
               </Link>
@@ -110,7 +110,7 @@ function Features(){
                 <h3 class="card-title">Engineer Consulation</h3>
 
                 <div class="card-btn">
-                  <ion-icon icon={arrowForwardOutline}></ion-icon>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
                 </div>
 
               </Link>
@@ -126,7 +126,7 @@ function Features(){
                 <h3 class="card-title">Mason consultation</h3>
 
                 <div class="card-btn">
-                  <ion-icon icon={arrowForwardOutline}></ion-icon>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
                 </div>
 
               </Link>
@@ -142,7 +142,7 @@ function Features(){
                 <h3 class="card-title">Legal Services</h3>
 
                 <div class="card-btn">
-                  <ion-icon icon={arrowForwardOutline}></ion-icon>
+                  <ion-icon name="arrow-forward-outline"></ion-icon>
                 </div>
 
               </Link>
