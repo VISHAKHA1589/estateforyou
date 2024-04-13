@@ -35,9 +35,10 @@ import Interior from "./pages/Amenities/interior.jsx";
 import Planning from "./pages/Amenities/planning.jsx";
 import Materials from "./pages/Amenities/materials.jsx";
 import Sanitary from "./pages/Amenities/sanitary.jsx";
-import EngineerConsultation from "./pages/Amenities/EngineerConsulation.jsx";
+import EngineerConsultation from './pages/Amenities/EngineerConsultation.jsx';
 import LegalServices from "./pages/Amenities/legalservices.jsx";
 import Mason from "./pages/Amenities/mason.jsx";
+
 
 const Root = () => {
     const [isAppLoaded, setIsAppLoaded] = useState(false); // State to track app loading

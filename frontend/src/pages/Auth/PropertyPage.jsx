@@ -7,6 +7,7 @@ import { useAuth0 } from "@auth0/auth0-react"; // Import useAuth0 hook
 import Navigation from './Navigation';
 import './PropertyPage.css';
 import EmailForm from './Emailform';
+import Loading from "../../Loading.jsx";
 
 const PropertyPage = () => {
   const { id: propertyId } = useParams();
@@ -48,10 +49,10 @@ const PropertyPage = () => {
   const handleThumbnailClick = (imageUrl) => {
     setSelectedImage(imageUrl);
   };
-
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
+
 
   if (isError) {
     return <div>Error occurred while fetching data</div>;

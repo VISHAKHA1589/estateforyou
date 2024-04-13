@@ -6,6 +6,7 @@ import Navigation from "./Navigation";
 import Footer from "../User/Footer";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useSelector } from "react-redux";
+import Loading from "../../Loading.jsx";
 
 const AllUserProperties = () => {
   const { data: properties, isLoading, isError } = useAllPropertiesQuery();
@@ -21,12 +22,13 @@ const AllUserProperties = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  if (loading) {
-    return <div>Loading...</div>;
+  if (loading) {return <Loading/>
   }
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return {
+    Loading
+  };
   }
 
   if (isError) {
@@ -84,7 +86,7 @@ const AllUserProperties = () => {
                     <div className="flex justify-between items-center">
                       <Link
                         to={`/property/update/${property._id}`}
-                        className="inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-pink-600 rounded-md hover:bg-pink-700 focus:ring-2 focus:ring-pink-500 focus:outline-none"
+                        className="inline-flex items-center px-3 py-1 text-sm font-medium text-center text-white bg-blue-500 rounded-md hover:bg-blue-700 focus:ring-2 focus:ring-pink-500 focus:outline-none"
                       >
                         Update
                         <svg

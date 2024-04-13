@@ -23,8 +23,8 @@ function Hero() {
                 class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 from-20% via-blue-600 via-30% to-green-600">house</span>
               by us.
             </h1>
-            <p className="hero-text">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
+            <p className="hero-text mt-4">
+              Find the home that reflects your unique lifestyle and aspirations.
             </p>
             <Link to="/enquiry"><button className="btn">Make An Enquiry</button></Link>
           </div>
